@@ -1,0 +1,31 @@
+#############################################################
+#
+# Filter description file for MSl12
+#
+# Format:  
+#
+# function name, band (1-8), width (pixels), height (scans), minfill
+# 
+# if width is specified as -1, a diamond-shaped kernel of max width and
+# heighth equal to specified height will be used for the filtering window.
+#
+# If number of unmasked pixels in window is less than minfill, center
+# pixel will be masked and flagged as FILTER_FAILURE. A default value
+# for minfill will be computed if -1 is specified.
+#
+# Example: 
+#
+# ltrmed, 7,  5,  5, -1
+# ltrmed, 8,  5,  5, 13
+#
+# Filter Functions:
+#
+#   dilate  - expands a specified mask (selected by band)
+#   ltmean  - averaging over Lt(band)
+#   ltmed   - median filtering on Lt(band)
+#   ltrmean - averaging over Lt(band) - Lr(band)
+#   ltrmed  - median filtering over Lt(band) - Lr(band)
+#   ltriqmean - averaging over the inter-quartile range of Lt(band) - Lr(band)
+#
+#############################################################
+epsmean,  7,  -1,  5,  1

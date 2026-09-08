@@ -1,0 +1,70 @@
+# Control file for level 3 Bin data files
+# Specifies what portions of the files should be verified
+#
+# Data bin percentage check
+#
+#           Error Low thresh   Error High thresh      
+#L3DAT             20.00               80.0
+L3DAT              2.0                 98.0
+# Weight check
+#
+L3WT
+#
+# % Gross value check
+#            error thresh (%) Low thresh     High thresh
+L3GCHK1       100.0                0.3           4.0
+L3GCHK2       100.0                0.3           3.0
+L3GCHK3       100.0                0.5           3.0
+L3GCHK4       100.0                0.40           2.00
+L3GCHK5       100.0                0.2           1.50
+L3GCHK6       100.0                0.05          1.2
+L3GCHK7       100.0                0.02         3.0
+L3GCHK8       100.0                0.02          2.0
+L3GCHK9       100.0                0.02          0.3
+L3GCHK10      100.0                0.3           15.0
+L3GCHK11      100.0                0.90          1.2
+L3GCHK12      100.0                0.01          0.30
+
+# % Statistical check
+#      
+L3STAT1  
+L3STAT2 
+L3STAT3
+L3STAT4  
+L3STAT5 
+L3STAT6
+L3STAT7  
+L3STAT8 
+L3STAT9 
+L3STAT10
+L3STAT11
+L3STAT12
+#
+# Climatology check
+#             Thresh1L   Thresh1H  Thresh2L  Thresh1H  Thresh3L  Thresh3H 
+#L3CCHK1         25.0       25.0       8.0       8.0       1.5       1.5     
+#L3CCHK2         25.0       25.0       8.0       8.0       1.5       1.5       
+#L3CCHK3         25.0       25.0       8.0       8.0       1.5       1.5      
+#L3CCHK4         25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK5         25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK6         25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK7         25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK8         25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK9         25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK10        25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK11        25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK12        25.0       25.0       8.0       8.0       1.5       1.5
+#L3CCHK1         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK2         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK3         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK4         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK5         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK6         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK7         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK8         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK9         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK10         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK11         80.0       80.0      80.0      80.0      80.0      80.0
+#L3CCHK12         80.0       80.0      80.0      80.0      80.0      80.0
+#
+############### End of file

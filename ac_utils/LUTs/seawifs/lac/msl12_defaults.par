@@ -1,0 +1,9 @@
+#
+# MSL12 default parameters for SeaWiFS LAC
+# 
+
+filter_opt=1
+filter_file=$OCDATAROOT/seawifs/lac/seawifs_lac_filter.dat
+sl_pixl=-1
+sl_frac=0.250000
+

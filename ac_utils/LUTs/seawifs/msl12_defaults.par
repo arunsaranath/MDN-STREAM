@@ -1,0 +1,75 @@
+#
+# MSL12 default parameters for SeaWiFS
+# 
+
+# default output content
+# ----------------------
+suite=OC
+
+# lon/lat subsampling
+# -------------------
+
+# calibration
+# -----------
+calfile=$OCDATAROOT/seawifs/cal/seawifs_cal_2015.hdf
+gain=[1.0014, 0.9925, 0.9820, 0.9864, 0.9948, 0.9698, 0.9580, 1.0]
+offset=[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+
+# process control
+# ---------------
+
+# atmospheric correction and normalization
+# ----------------------------------------
+aermodfile=$OCDATAROOT/seawifs/aerosol/aerosol_seawifs
+aer_wave_short=765
+aer_wave_long=865
+mumm_alpha=1.72
+mumm_gamma=1.00
+mumm_epsilon=1.00
+oxaband_opt=1
+filter_file=$OCDATAROOT/seawifs/seawifs_gac_filter.dat
+
+# algorithm controls
+# ------------------
+chloc2_wave=[489,555]
+chloc2_coef=[0.2511,-2.0853,1.5035,-3.1747, 0.3383]
+chloc3_wave=[443,489,555]
+chloc3_coef=[0.2515,-2.3798,1.5823,-0.6372,-0.5692]
+chloc4_wave=[443,489,510,555]
+chloc4_coef=[0.3272,-2.9940,2.7218,-1.2259,-0.5683]
+kd2_wave=[490,555]
+kd2_coef=[0.0166,-0.8515,-1.8263,1.8714,-2.4414,-1.0690]
+coccolith=[1.1,0.9, 0.75, 1.85, 1.0, 1.65, 0.6, 1.15]
+qaa_wave=[412,443,490,555,670]
+giop_wave=[412,443,490,510,555,670]
+avw_coef=[-4.1487647556E+05,4.2173195987E+03,-1.7081781338E+01,3.4478422494E-02,-3.4666482319E-05,1.3889225086E-08]
+
+owtfile=$OCDATAROOT/seawifs/class/owt16_seawifs_stats_101111.hdf
+owtchlerrfile=$OCDATAROOT/seawifs/class/seawifs_owt_chl_error.txt
+
+# virtual constellation inputs
+# ____________________________
+vcnnfile=$OCDATAROOT/seawifs/ocr_vc/seawifs_ocr_vc_nn
+
+# flag thresholds
+# ---------------
+
+# ancillary met/ozone over-rides (-1000 = ignore)
+# ----------------------------------------------
+
+# masking
+# -------
+
+# line and pixel sampling
+# -----------------------
+
+# ancillary input
+# ---------------
+
+# processing mode (0 = standard processing)
+# -----------------------------------------
+
+# sensor-specific parameters
+# --------------------------
+sl_pixl=-1
+sl_frac=0.250000

@@ -1,0 +1,11 @@
+#
+# MSL12 LAND Suite parameters for SeaWiFS
+# 
+
+gain=[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
+l2prod=ndvi evi rhos_412 rhos_443 rhos_555 rhos_670 rhos_865 solz sola senz sena
+#land=$OCDATAROOT/common/landmask_dilated_25.dat
+proc_ocean=0
+proc_sst=0
+filter_opt=1
+filter_file=$OCDATAROOT/common/msl12_filter_LAND.dat

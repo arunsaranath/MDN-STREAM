@@ -42,10 +42,15 @@ def get_sample_uncertainity(pred_dist, compress=False):
         # mu = pred_dist['pred_mu'][ii, :]
         # var = pred_dist['pred_sigma'][ii, :]
 
-        aleatoric[ii, :], epistemic[ii, :] = uncertainity_estimation(nDim=pred_dist['pred_mu'][ii, :].shape[1],
-                                                                     nDist=pred_dist['pred_mu'][ii, :].shape[
-                                                                         0]).estimate_uncertainity(
-            pred_dist['pred_wts'][ii, :], pred_dist['pred_mu'][ii, :], pred_dist['pred_sigma'][ii, :])
+        alt, eps = uncertainity_estimation(nDim=pred_dist['pred_mu'][ii, :].shape[1], nDist=pred_dist['pred_mu'][ii, :].shape[0]
+                                ).estimate_uncertainity(
+                                    pred_dist['pred_wts'][ii, :], 
+                                    pred_dist['pred_mu'][ii, :], 
+                                    pred_dist['pred_sigma'][ii, :]
+                                )
+
+        aleatoric[ii, :] = alt.squeeze()
+        epistemic[ii, :] = eps.squeeze()
 
         """if aleatoric is None or epistemic is None:
             aleatoric = alt

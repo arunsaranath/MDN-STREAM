@@ -1,0 +1,264 @@
+# -----------------------------------------------------------
+# OLI/L8 sensor-specific atmospheric correction data
+# -----------------------------------------------------------
+
+Nbands = 7
+
+Lambda(1) = 443
+Lambda(2) = 482
+Lambda(3) = 561
+Lambda(4) = 655
+Lambda(5) = 865
+Lambda(6) = 1609
+Lambda(7) = 2201
+ 
+F0(1) = 189.652
+F0(2) = 200.396
+F0(3) = 182.079
+F0(4) = 155.038
+F0(5) = 95.063
+F0(6) = 24.755
+F0(7) = 8.546
+ 
+Tau_r(1) = 2.352E-01
+Tau_r(2) = 1.685E-01
+Tau_r(3) = 9.020E-02
+Tau_r(4) = 4.793E-02
+Tau_r(5) = 1.551E-02
+Tau_r(6) = 1.284E-03
+Tau_r(7) = 3.697E-04
+ 
+k_oz(1) = 2.929E-03
+k_oz(2) = 1.957E-02
+k_oz(3) = 1.038E-01
+k_oz(4) = 6.200E-02
+k_oz(5) = 2.223E-03
+k_oz(6) = 0.000E+00
+k_oz(7) = 0.000E+00
+ 
+k_no2(1) = 5.024E-19
+k_no2(2) = 3.213E-19
+k_no2(3) = 8.351E-20
+k_no2(4) = 1.177E-20
+k_no2(5) = 3.306E-23
+k_no2(6) = 0.000E+00
+k_no2(7) = 0.000E+00
+ 
+aw(1) = 7.170E-03
+aw(2) = 1.581E-02
+aw(3) = 6.998E-02
+aw(4) = 3.751E-01
+aw(5) = 4.630E+00
+aw(6) = 7.607E+02
+aw(7) = 2.250E+03
+ 
+bbw(1) = 2.169E-03
+bbw(2) = 1.529E-03
+bbw(3) = 8.054E-04
+bbw(4) = 4.215E-04
+bbw(5) = 1.332E-04
+bbw(6) = 1.052E-05
+bbw(7) = 2.958E-06
+
+ooblw01(1) = 9.931E-01
+ooblw02(1) = 2.053E-03
+ooblw03(1) = -1.642E-04
+ooblw01(2) = 9.771E-01
+ooblw02(2) = 4.611E-02
+ooblw03(2) = -5.545E-03
+ooblw01(3) = 1.047E+00
+ooblw02(3) = -2.140E-02
+ooblw03(3) = 1.682E-03
+ooblw01(4) = 9.682E-01
+ooblw02(4) = -6.174E-03
+ooblw03(4) = 7.386E-04
+ooblw01(5) = 1.0
+ooblw02(5) = 0.0
+ooblw03(5) = 0.0
+ooblw01(6) = 1.0
+ooblw02(6) = 0.0
+ooblw03(6) = 0.0
+ooblw01(7) = 1.0
+ooblw02(7) = 0.0
+ooblw03(7) = 0.0
+
+#
+# co2 transmittance
+#
+t_co2(1) = 1.0
+t_co2(2) = 1.0
+t_co2(3) = 1.0
+t_co2(4) = 1.0
+t_co2(5) = 1.0
+t_co2(6) = 1.0
+t_co2(7) = 1.0
+
+#
+# h2o absorption transittance function
+#
+a_h2o(1) = 1.0
+a_h2o(2) = 1.0
+a_h2o(3) = 1.0
+a_h2o(4) = 1.0
+a_h2o(5) = 1.0
+a_h2o(6) = 1.0
+a_h2o(7) = 1.0
+
+b_h2o(1) = 0.0
+b_h2o(2) = 0.0
+b_h2o(3) = 0.0
+b_h2o(4) = 0.0
+b_h2o(5) = 0.0
+b_h2o(6) = 0.0
+b_h2o(7) = 0.0
+
+c_h2o(1) = 0.0
+c_h2o(2) = 0.0
+c_h2o(3) = 0.0
+c_h2o(4) = 0.0
+c_h2o(5) = 0.0
+c_h2o(6) = 0.0
+c_h2o(7) = 0.0
+
+d_h2o(1) = 0.0
+d_h2o(2) = 0.0
+d_h2o(3) = 0.0
+d_h2o(4) = 0.0
+d_h2o(5) = 0.0
+d_h2o(6) = 0.0
+d_h2o(7) = 0.0
+
+e_h2o(1) = 0.0
+e_h2o(2) = 0.0
+e_h2o(3) = 0.0
+e_h2o(4) = 0.0
+e_h2o(5) = 0.0
+e_h2o(6) = 0.0
+e_h2o(7) = 0.0
+
+f_h2o(1) = 0.0
+f_h2o(2) = 0.0
+f_h2o(3) = 0.0
+f_h2o(4) = 0.0
+f_h2o(5) = 0.0
+f_h2o(6) = 0.0
+f_h2o(7) = 0.0
+
+g_h2o(1) = 0.0
+g_h2o(2) = 0.0
+g_h2o(3) = 0.0
+g_h2o(4) = 0.0
+g_h2o(5) = 0.0
+g_h2o(6) = 0.0
+g_h2o(7) = 0.0
+
+#
+# White-cap albedo
+#
+# NEEDS UPDATE
+#
+awhite(1) = 1.0
+awhite(2) = 1.0
+awhite(3) = 1.0
+awhite(4) = 1.0
+awhite(5) = 1.0
+awhite(6) = 1.0
+awhite(7) = 1.0
+
+#
+# Out-of-band water-vapor functions (Yang algorithm)
+# from HRG modisoob2.cal.coeff
+#
+# NEEDS UPDATE 
+#
+oobwv01(1) = 1.0
+oobwv02(1) = 0.0
+oobwv03(1) = 0.0
+oobwv04(1) = 0.0
+oobwv05(1) = 0.0
+oobwv06(1) = 0.0
+oobwv07(1) = 0.0
+oobwv08(1) = 0.0
+oobwv09(1) = 0.0
+oobwv10(1) = 0.0
+oobwv11(1) = 0.0
+oobwv12(1) = 0.0
+
+oobwv01(2) = 1.0
+oobwv02(2) = 0.0
+oobwv03(2) = 0.0
+oobwv04(2) = 0.0
+oobwv05(2) = 0.0
+oobwv06(2) = 0.0
+oobwv07(2) = 0.0
+oobwv08(2) = 0.0
+oobwv09(2) = 0.0
+oobwv10(2) = 0.0
+oobwv11(2) = 0.0
+oobwv12(2) = 0.0
+
+oobwv01(3) = 1.0
+oobwv02(3) = 0.0
+oobwv03(3) = 0.0
+oobwv04(3) = 0.0
+oobwv05(3) = 0.0
+oobwv06(3) = 0.0
+oobwv07(3) = 0.0
+oobwv08(3) = 0.0
+oobwv09(3) = 0.0
+oobwv10(3) = 0.0
+oobwv11(3) = 0.0
+oobwv12(3) = 0.0
+
+oobwv01(4) = 1.0
+oobwv02(4) = 0.0
+oobwv03(4) = 0.0
+oobwv04(4) = 0.0
+oobwv05(4) = 0.0
+oobwv06(4) = 0.0
+oobwv07(4) = 0.0
+oobwv08(4) = 0.0
+oobwv09(4) = 0.0
+oobwv10(4) = 0.0
+oobwv11(4) = 0.0
+oobwv12(4) = 0.0
+
+oobwv01(5) = 1.0
+oobwv02(5) = 0.0
+oobwv03(5) = 0.0
+oobwv04(5) = 0.0
+oobwv05(5) = 0.0
+oobwv06(5) = 0.0
+oobwv07(5) = 0.0
+oobwv08(5) = 0.0
+oobwv09(5) = 0.0
+oobwv10(5) = 0.0
+oobwv11(5) = 0.0
+oobwv12(5) = 0.0
+
+oobwv01(6) = 1.0
+oobwv02(6) = 0.0
+oobwv03(6) = 0.0
+oobwv04(6) = 0.0
+oobwv05(6) = 0.0
+oobwv06(6) = 0.0
+oobwv07(6) = 0.0
+oobwv08(6) = 0.0
+oobwv09(6) = 0.0
+oobwv10(6) = 0.0
+oobwv11(6) = 0.0
+oobwv12(6) = 0.0
+
+oobwv01(7) = 1.0
+oobwv02(7) = 0.0
+oobwv03(7) = 0.0
+oobwv04(7) = 0.0
+oobwv05(7) = 0.0
+oobwv06(7) = 0.0
+oobwv07(7) = 0.0
+oobwv08(7) = 0.0
+oobwv09(7) = 0.0
+oobwv10(7) = 0.0
+oobwv11(7) = 0.0
+oobwv12(7) = 0.0
+

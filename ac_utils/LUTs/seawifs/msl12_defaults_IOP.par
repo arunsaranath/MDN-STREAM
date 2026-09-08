@@ -1,0 +1,34 @@
+#
+# IOP l2gen suite for SeaWiFS
+#
+l2prod=a_vvv_giop bb_vvv_giop aph_443_giop adg_443_giop adg_s_giop bbp_443_giop bbp_s_giop rrsdiff_giop aph_unc_443_giop adg_unc_443_giop bbp_unc_443_giop
+
+## IOP model for use in downstream products (e.g. Kd_###_lee)
+##  7 = GIOP
+iop_opt=7
+
+# the following parameters are listed here for informational purposes.
+# These are set in $OCDATAROOT/common/msl12_defaults.par:
+## L-M fit
+#giop_fit_opt=1
+
+## Gordon to relate bb/(a+bb) to Rrs
+#giop_rrs_opt=0
+
+## Bricaud 1998 aph spectrum
+#giop_aph_opt=2
+
+## exponential adg function
+#giop_adg_opt=1
+#giop_adg_s=0.018
+
+## power-law bbp with QAA adaptive exponent
+#giop_bbp_opt=3
+
+## temperature & salinity-dependent seawater nw, aw, bbw
+## currently (ca. June 2014) only nw and bbw are modified
+#seawater_opt=1
+
+# These are set in $OCDATAROOT/seawifs/msl12_defaults.par
+## restrict to OC wavelengths
+#giop_wave=412,443,490,510,555,670

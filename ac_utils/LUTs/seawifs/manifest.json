@@ -1,0 +1,1916 @@
+{
+    "checksum_bytes": 1000000,
+    "files": {
+        "aerosol/aerosol_seawifs_default.hdf": {
+            "symlink": "aerosol_seawifs_r75f01v01.hdf",
+            "tag": "V2021.0"
+        },
+        "aerosol/aerosol_seawifs_r30f00v01.hdf": {
+            "checksum": "9802d136b7da4909bf7f515688b1fdc175a0bffabd84e7fcdb61346555c29174",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f01v01.hdf": {
+            "checksum": "8f17251b9bbf2aea264c8b270869ba8ba2c029e337677119832dfa4402089c34",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f02v01.hdf": {
+            "checksum": "7ae51d4a0ba85cc784c77302c7eff0628dccf4a3c270a1d4a0d9736e568eef8d",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f05v01.hdf": {
+            "checksum": "410822a4bbd20ef6958a22fc9802b4426ba61600d8961d0ddc6be4dd326abef7",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f10v01.hdf": {
+            "checksum": "3fcdd1563e61697b78722179f762544ecc657f8e34facd88594f2af1f6db20dd",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f20v01.hdf": {
+            "checksum": "b70691a8cf3a5078bd3f6b757b47e6b376be98578356a6c00dd5b403afc67ec9",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f30v01.hdf": {
+            "checksum": "5c7ad5524c54d64efd6795b76696fc9272da7f0292d11f599c94fabf27a47390",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f50v01.hdf": {
+            "checksum": "291036ff814b67bb4ac970250701a4cd9ebe8f28b7f187cb5c7dad3f867b534f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f80v01.hdf": {
+            "checksum": "836dc3b85564bfc1a613bcea30dc62f8158eec487826a8c265f5b2e794c5e1ac",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r30f95v01.hdf": {
+            "checksum": "ad6f04fdbaf08d5c85ea25a204f74074519677937ea4db146dbdf168aecb5607",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f00v01.hdf": {
+            "checksum": "ace16cb0d1512597fd2bb21a8349716b329e1a267a27d15255f608f25cfce42d",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f01v01.hdf": {
+            "checksum": "c64a59311cf09b2de43680e55076fd1454d984b1e664fd1274defac1b0a78851",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f02v01.hdf": {
+            "checksum": "0068eac637ce462c90cc44ac01064b8f0801825e182eefaf3a52d482b2785b6a",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f05v01.hdf": {
+            "checksum": "697892dcdad6f85d8e72291ab12f9817efe7891553f7bb9089612e70254ca1e5",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f10v01.hdf": {
+            "checksum": "48a3741d7fd2ce342587a60d1141306e6e7f5d552ac1f4e9be5cd843b62a4a32",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f20v01.hdf": {
+            "checksum": "d3e5cb008b7ad4937e4e001b1e7180c90e591177f26a0063c984315ed3c84bba",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f30v01.hdf": {
+            "checksum": "77906735db5c65cdb9c27db459c49ecd32bec1554302496038f4fad8a27f9c44",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f50v01.hdf": {
+            "checksum": "20aa5c158f2e4194cf56e29748e149d1f4213885519ce01666fbd55d8faff49e",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f80v01.hdf": {
+            "checksum": "c0151de693624dd2a6427539abcabfa5a2f0b6c590a1605c284b6b5b53b96468",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r50f95v01.hdf": {
+            "checksum": "c4c47c09a915d76d90d4aec4e4284ea83f877e30646df44a20acc3716e011758",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f00v01.hdf": {
+            "checksum": "5574a3dc9f7c01ba1b505de1978f9e934c52ea0aab242224fcfabd2218914e76",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f01v01.hdf": {
+            "checksum": "72f9d00b3013266a32ef21fa7d27f3203d8616a205ae656a2312e09ef6110b72",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f02v01.hdf": {
+            "checksum": "a56821cc6ac2bb1ff37bfb15a167b2450d6b802fddc9784e98393966bf945029",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f05v01.hdf": {
+            "checksum": "db83bf797c6951173c5087b90b1cbe16d3b8a0a8a7f2c289999b09bffcdb19ca",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f10v01.hdf": {
+            "checksum": "ae4072c685a7d7c843ac198328e5b1856198789ca5c47547abe96e55f2e83020",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f20v01.hdf": {
+            "checksum": "5965f94e50201b6a170c98198029d2cea13346b117f801c81edecb8c3cb20207",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f30v01.hdf": {
+            "checksum": "b25e7e10d58053a5b24912f9147a050ecf613373b66c1c1a49598aad7a0c2766",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f50v01.hdf": {
+            "checksum": "723d79a3c93db2d080c801301bc02fe3454422d603088be8639d54ded2cbe30f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f80v01.hdf": {
+            "checksum": "39561226cd75fde2701782f527b01bc0d4676ff99b516ba046adfba9c3ba7cb8",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r70f95v01.hdf": {
+            "checksum": "df2ec2b9988c6012dfa437ffe22e674e6a304885e6c31ed1c23030cada85fcd7",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f00v01.hdf": {
+            "checksum": "6e6d56237a7d9505ce6585d3aa89256e9e77c96be1579a3fafb251d27c140de5",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f01v01.hdf": {
+            "checksum": "fcaec378a22129fed19b98cb87908fe93cfc8a2f1517b3677b4a9f2771773dd7",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f02v01.hdf": {
+            "checksum": "efe1e01c2ecfb9246ce04e2cd561316061a622205c7fffe2b15b12a0164a442e",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f05v01.hdf": {
+            "checksum": "653c65a232b783b5eece66f6460cd165defc782059d1d97b36bdc015187ac7cf",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f10v01.hdf": {
+            "checksum": "578ecbd60e689213078999b1f16c5b3c03b788e70523618b9de69b8bbc726c5f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f20v01.hdf": {
+            "checksum": "d388ddfe7bc3287d0cf24151b5eb17233644e787f598539feaca777ab7d3683a",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f30v01.hdf": {
+            "checksum": "dd59428fb80a9287a42e4789bb7623156c7dcc439e8e71eb5dc3717ade932d0d",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f50v01.hdf": {
+            "checksum": "e0e19a5fcdf4ad721e258a3b9d30b2098222244cbfd61bc15b387298bfa6d260",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f80v01.hdf": {
+            "checksum": "1e0df23d0712ce09e80cf280415ddfbdd7a9b425605019aedd1892648ef5e3bf",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r75f95v01.hdf": {
+            "checksum": "4aff132f548cb109e94f166cdad6d360b1297f5d7ae2036a6b201806df39deee",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f00v01.hdf": {
+            "checksum": "c0624c110275e33a22ed98386bb78ca606c6147dca65c252d9a6fc331d2ca9aa",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f01v01.hdf": {
+            "checksum": "10aec2990cb7722cd84ce02e191ff461d2e25c6aef35273728ddfbec3a99d242",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f02v01.hdf": {
+            "checksum": "e5563623f76867c2336e0dfc0f649a8b073ef3cfaf20bfcce64b084bf209ef4e",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f05v01.hdf": {
+            "checksum": "55d29115ba4128531eecaeee711e0f871035b180bd34c097bd0f746cb2dd8a63",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f10v01.hdf": {
+            "checksum": "c705baf69442914052aafca98096871bd1a5daf1c8cbbcab71dc0b10dd838bd8",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f20v01.hdf": {
+            "checksum": "c58b4379351bd5faace831195f2b760bd21218edf3c0dfc73bc98093ca510e1e",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f30v01.hdf": {
+            "checksum": "9909e25aa2b81b99d2a48df0eddace1ee990a05ae4f7822b70907709d1825f9d",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f50v01.hdf": {
+            "checksum": "b5a2715a3ea0d890771c9a89c7d843045276b2a38a7a420e76b98c919d6d4e99",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f80v01.hdf": {
+            "checksum": "b00ed5cf8c7dfcc7ea0ad9f0e0d9d5dfbb9aac85b94546803ee50aee16a3d6ca",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r80f95v01.hdf": {
+            "checksum": "8a4fbd0f9b424b5c8d0a378d5693cf9425840b55fa929c079e4520e83c752a6a",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f00v01.hdf": {
+            "checksum": "b8ab50e0f1d3d90c73b0c9a6d2c0a47cd5782192a4b6085bb6d3e460ae0670c6",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f01v01.hdf": {
+            "checksum": "151d023a85c7df34a498d9fb8abd827b89f48f0b2a4d055af1f9975ed877b692",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f02v01.hdf": {
+            "checksum": "bcf8df035be263ffabda8674ce9eeecf919706128138e9f651ecb1b9e22f15fc",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f05v01.hdf": {
+            "checksum": "417dbf6581237ffc60821d125430b5b711ef9ddd5d887002f5020ec6f3c05cb2",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f10v01.hdf": {
+            "checksum": "799fde74c1d10df86004567701e4d322eaad4754e94c9dc2ed8fc6416e8b600f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f20v01.hdf": {
+            "checksum": "a8ff581bedbf537bbe9088f3db4a7b248436d3605a292b179202e871873b4eaf",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f30v01.hdf": {
+            "checksum": "7e5a956c390d4093f2de678524f4c2c4e7d82b2a719a72b917bef6e4e80a5b4a",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f50v01.hdf": {
+            "checksum": "6932d460a1f0db784a69a6b0b366f6d769f055799a23130251c62a578042e1ea",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f80v01.hdf": {
+            "checksum": "7defab73ce1174666c48365f088679f2b4885faf82f4942c24761920eadabe63",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r85f95v01.hdf": {
+            "checksum": "6ccc399ca4093c6e13e25d9730002bd6d947d72bce8e30e95105aa50742dd67c",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f00v01.hdf": {
+            "checksum": "c29fec0fd91e17765b72b6d921737094a984d75122f9f6659bf81ddfd9eeaef1",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f01v01.hdf": {
+            "checksum": "047e6a632179e0d20bad819fb79537be1cc5b8ff3b4a0c6c4eeccdeb501a47ac",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f02v01.hdf": {
+            "checksum": "1221d912efaf448a5c8bdd7da6edf5282a1d1bd15f61b31b8454fbcb01cc6694",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f05v01.hdf": {
+            "checksum": "32afb0d0c10d7dc70910aaa13fbf415ca0dd97aefccec6540d5f9a1d2af73701",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f10v01.hdf": {
+            "checksum": "8d1f4980d8a36420023c846e6f1df27454348f453f3e1b2e8a4fb43101fc46a4",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f20v01.hdf": {
+            "checksum": "93cf41b8808449477920b82b796dc9d37f765ad0064a862ecc4e08101939a08e",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f30v01.hdf": {
+            "checksum": "511d86303092156c0707555dc148dbc016d59a57e84d144dc1a6eaa109b3015c",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f50v01.hdf": {
+            "checksum": "a71ca2c8fa91907465959cd9d655fdb1ade0da9968acdbdc7a6712e36f411eeb",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f80v01.hdf": {
+            "checksum": "7adf10bc87525818ef9d67e5ce80c422ac0e96c42a5e40afb5b6be69c118e3c7",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r90f95v01.hdf": {
+            "checksum": "591d8c5046daa2dc32e0c3ebd293fb3fac0035b4949578a463fe98df5062d29c",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f00v01.hdf": {
+            "checksum": "78d96be1711b576bca2191bf0b43bf7a49b7680ceaf7116eed2bfec603e5fa4f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f01v01.hdf": {
+            "checksum": "b47453b74be238db0c3e39f4d32d8fc8547fe9c1b339c504ecda9fffcbffcdb3",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f02v01.hdf": {
+            "checksum": "9ac86dad6187e3c823fca8e4576dd1ad753c3e1f7862355cadceec051c87d91f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f05v01.hdf": {
+            "checksum": "b26d041bfc0b55631d61f30719bfb4f540b99aff060d8befe11723e5684caca8",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f10v01.hdf": {
+            "checksum": "4aa7a7c80207bd4c840e8c83b3a5c7f42b53b4b901ea1140f521efcf80b22d9d",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f20v01.hdf": {
+            "checksum": "9f42d61617353d73b84b2a8cfd812643058afd1d9f6357117d454561412da432",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f30v01.hdf": {
+            "checksum": "115ec84241cd56a5fadbc99a3b887db64bc9a8cf02c881d9db3a384c0caf059f",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f50v01.hdf": {
+            "checksum": "c75d1b0d375dfdd3b650d604848dd9e313a54b44c9d43f9fa0088016925a42c6",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f80v01.hdf": {
+            "checksum": "f0acce91d39ebcce6ec92a480c4fd78a272e7cd1f24e4b85a297a1a3c902312a",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "aerosol/aerosol_seawifs_r95f95v01.hdf": {
+            "checksum": "16fe60e917d5af304a636de6955a55f40c44c594704f73c4515895cb4f5d7b09",
+            "mode": 33204,
+            "size": 5639994,
+            "tag": "T2020.7"
+        },
+        "cal/SeaWiFS_RSRs.hdf": {
+            "checksum": "a53ba9990ab369eaedb445d9d938cb733a5ab837e521edf31f3fa2b56894ce77",
+            "mode": 33204,
+            "size": 29793,
+            "tag": "initial"
+        },
+        "cal/SeaWiFS_RSRs.txt": {
+            "checksum": "32bd347d8531a5ec62d86e158a6ebdfbb953b1e61b9847550de3c5b02b212c9f",
+            "mode": 33204,
+            "size": 80249,
+            "tag": "initial"
+        },
+        "cal/seawifs_cal_2010.hdf": {
+            "checksum": "24220a7a537030bb786b3db826697f91f45f7ec1ac88da455e8d93a8525aaa5e",
+            "mode": 33204,
+            "size": 22601,
+            "tag": "initial"
+        },
+        "cal/seawifs_cal_2014.hdf": {
+            "checksum": "6c22afe0143e1ee302d1d7b071a5e9991f073a713c577a3dbdddb8a7e022aecb",
+            "mode": 33204,
+            "size": 45483,
+            "tag": "initial"
+        },
+        "cal/seawifs_cal_2015.hdf": {
+            "checksum": "ad9f8652cfe8ba2c288dead9755fff55cd41a18e410011793155f7d71fa5d730",
+            "mode": 33204,
+            "size": 45483,
+            "tag": "initial"
+        },
+        "class/owt16_seawifs_stats_101111.hdf": {
+            "checksum": "456d3d47965434112d2ffafd34a650ab62aa7f4fed332af2d337992de3096406",
+            "mode": 33204,
+            "size": 5200,
+            "tag": "initial"
+        },
+        "class/seawifs_owt_chl_error.txt": {
+            "checksum": "737590c55cb4b37f2de0b19f01944a43b990d64eb2218a4b72885069593d5015",
+            "mode": 33204,
+            "size": 306,
+            "tag": "initial"
+        },
+        "gac/msl12_defaults.par": {
+            "checksum": "2773a9b84e02c3f0d9a59514f2e3135b55e845569ef770a501e6d9f8e63953ef",
+            "mode": 33204,
+            "size": 150,
+            "tag": "initial"
+        },
+        "gac/seawifs_gac_filter.dat": {
+            "checksum": "814c91e37b909f222c74b8a1bf15445e0aa50db1b12ef29993e7dae56c9c7e7b",
+            "mode": 33204,
+            "size": 1105,
+            "tag": "initial"
+        },
+        "iop/kd_jamet/seawifs_kd_jamet.dat": {
+            "checksum": "29de297f552f05e0660306f50cf06df32476d163aee91fa2dbfc5107db66e31a",
+            "mode": 33204,
+            "size": 3033,
+            "tag": "initial"
+        },
+        "iop/las/LUT_AW": {
+            "checksum": "a6333e4bfbfa35e2676932beede0c9198b541da4b435622a1d141a671b897f54",
+            "mode": 33204,
+            "size": 90,
+            "tag": "initial"
+        },
+        "iop/las/LUT_KD": {
+            "checksum": "db54927460c3c2054ad8ab541649a8bb52847a2858461659eb5813c305dbea4f",
+            "mode": 33204,
+            "size": 503,
+            "tag": "initial"
+        },
+        "iop/las/LUT_RRS": {
+            "checksum": "aa9a1fa42a8bc84a219d17a038da223eb328e4d8c311afa3b74860a281aa32ac",
+            "mode": 33204,
+            "size": 379,
+            "tag": "initial"
+        },
+        "iop/pic/2012_seawifs_coccolith_table.dat": {
+            "checksum": "a8b51ffd87375e219e1776c0e362c046584d6c45496e162fa01459f73d853344",
+            "mode": 33204,
+            "size": 12065876,
+            "tag": "initial"
+        },
+        "iop/pic/seawifs_calcite_table.dat": {
+            "checksum": "f7d98544a0b64b69adafecf0f6880a5ba6675f02b0d1b299bda82d393694a8d7",
+            "mode": 33204,
+            "size": 12065874,
+            "tag": "initial"
+        },
+        "iop/pml/F_0_phi90_nconst_7.2_cox_30x24_i386_head.dat": {
+            "checksum": "20fbb82818ea4be164ffdec7d3aab6b73b30a4286dade1ced783b3afaa7e1383",
+            "mode": 33204,
+            "size": 344,
+            "tag": "initial"
+        },
+        "iop/pml/F_0_phi90_nconst_7.2_cox_30x24_i386_table.dat": {
+            "checksum": "61c3b96127836a8d17be6e30233a1d23751077cf8a921b9534018a9347c58961",
+            "mode": 33204,
+            "size": 17121280,
+            "tag": "initial"
+        },
+        "iop/pml/F_0_phi90_nconst_7.2_cox_30x24_ieee_head.dat": {
+            "checksum": "cb5174e7d410156f698edad32e4892c5a9e2c66ff63b20fda494e30d13e418d0",
+            "mode": 33204,
+            "size": 344,
+            "tag": "initial"
+        },
+        "iop/pml/F_0_phi90_nconst_7.2_cox_30x24_ieee_table.dat": {
+            "checksum": "20b391c06e2afcc8b3d874794d1281918fb3abb0a8416f66b4516ce829aaba5e",
+            "mode": 33204,
+            "size": 17121280,
+            "tag": "initial"
+        },
+        "iop/pml/gop_vk_i386.dat": {
+            "checksum": "4cfb476320cf3a439889b3d55d29697079781e459a1ef399f71b735c238dd5ae",
+            "mode": 33204,
+            "size": 6832,
+            "tag": "initial"
+        },
+        "iop/pml/gop_vk_ieee.dat": {
+            "checksum": "a02dac7d6c981964496c2925e8dd561922611b668ea75d344eb25e753d350d08",
+            "mode": 33204,
+            "size": 6832,
+            "tag": "initial"
+        },
+        "l1brsgen_defaults.par": {
+            "checksum": "5d77e85b18b8f78a389f25953b1aae12dce873e3eaeb95702ff72ec9492c8f88",
+            "mode": 33204,
+            "size": 106,
+            "tag": "initial"
+        },
+        "l1mapgen_defaults.par": {
+            "checksum": "5d77e85b18b8f78a389f25953b1aae12dce873e3eaeb95702ff72ec9492c8f88",
+            "mode": 33204,
+            "size": 106,
+            "tag": "initial"
+        },
+        "l2bin_defaults.par": {
+            "checksum": "902e1fc7d50c119ff3b67415933706ca001f95d9eadce08455dc2d4779bd6b11",
+            "mode": 33204,
+            "size": 183,
+            "tag": "initial"
+        },
+        "l2bin_defaults_CDOM.par": {
+            "checksum": "c88f86ea1c2edd84bab0fc919cd2adaa9102537f02651db3aed4f7bdea3c564c",
+            "mode": 33204,
+            "size": 20,
+            "tag": "initial"
+        },
+        "l2bin_defaults_CHL.par": {
+            "checksum": "0a8fbecaad28c2dffb25fda2dc661b960fb09b99f39a94692504bafe51080d59",
+            "mode": 33204,
+            "size": 25,
+            "tag": "initial"
+        },
+        "l2bin_defaults_CHLOCI.par": {
+            "checksum": "bfabd9ad7b0edc6a3ac014ed4cc9642429f6f79c411e174e885814bd0fe80954",
+            "mode": 33204,
+            "size": 25,
+            "tag": "initial"
+        },
+        "l2bin_defaults_GIBS.par": {
+            "checksum": "a32a5dd4c7486394255b6dd6470904689d3894b4aba4ad06a8e0937e2a9de1eb",
+            "mode": 33204,
+            "size": 42,
+            "tag": "initial"
+        },
+        "l2bin_defaults_IOP.par": {
+            "checksum": "200fbf2ad45a37576ec75962e1a9a9ee2934dbe28fd4d235b581f449b1a863e6",
+            "mode": 33204,
+            "size": 472,
+            "tag": "initial"
+        },
+        "l2bin_defaults_KD490.par": {
+            "checksum": "f2598e3789a4715832f5a376fe24bb20af83780e538bd45e65b822139dcc4faa",
+            "mode": 33204,
+            "size": 16,
+            "tag": "initial"
+        },
+        "l2bin_defaults_LAND.par": {
+            "checksum": "ddc7481ed28d4fc38cccc0a19e444da35ebbd564aefb45682ca95a9b06c58805",
+            "mode": 33204,
+            "size": 132,
+            "tag": "initial"
+        },
+        "l2bin_defaults_OCNC.par": {
+            "checksum": "f2ec6a554a09d3c5c2154bed9c740136b5e47594ca3313b8a71cd56c93ba21a7",
+            "mode": 33204,
+            "size": 128,
+            "tag": "initial"
+        },
+        "l2bin_defaults_OCTEST.par": {
+            "checksum": "fb5ced283523c674e6f110b6b99c87befb1fc22c7bf122c79c0a602375606866",
+            "mode": 33204,
+            "size": 154,
+            "tag": "initial"
+        },
+        "l2bin_defaults_OCTEST1.par": {
+            "checksum": "1f135b6b08ad821c2970cefb0e277c0bd6d7bbc711147bf1d1cce58c923d2116",
+            "mode": 33204,
+            "size": 177,
+            "tag": "initial"
+        },
+        "l2bin_defaults_OCTEST2.par": {
+            "checksum": "1f135b6b08ad821c2970cefb0e277c0bd6d7bbc711147bf1d1cce58c923d2116",
+            "mode": 33204,
+            "size": 177,
+            "tag": "initial"
+        },
+        "l2bin_defaults_OCTEST4.par": {
+            "checksum": "1a267be424ab28983fd0abd8c04f33c30ec845f2e3c751f018f81dad2f166747",
+            "mode": 33204,
+            "size": 200,
+            "tag": "initial"
+        },
+        "l2bin_defaults_OWT.par": {
+            "checksum": "978c40bfc6df309700a738e84b329df223566950fe7f8ba37065e7ac6b82777e",
+            "mode": 33204,
+            "size": 32,
+            "tag": "initial"
+        },
+        "l2bin_defaults_PAR.par": {
+            "checksum": "310bbabaedd5361bc17a36e5b4e72e6dbeaf50fd2fc10c2340474489272c1ff8",
+            "mode": 33204,
+            "size": 49,
+            "tag": "initial"
+        },
+        "l2bin_defaults_PIC.par": {
+            "checksum": "0061f06ef61e1ee65c414b44d0c4535f487ba52f511d9ba01b76821419d0a558",
+            "mode": 33204,
+            "size": 115,
+            "tag": "initial"
+        },
+        "l2bin_defaults_POC.par": {
+            "checksum": "2d44e1e3e9ddb4469bd0580cbf24309c5efb7960df23caf89f94ac1ec9e657f6",
+            "mode": 33204,
+            "size": 13,
+            "tag": "initial"
+        },
+        "l2bin_defaults_RRS.par": {
+            "checksum": "f1429018bd5c9ad340cd82e75dec9cf330a15e6112b52b2235e9e3e3741eb3f3",
+            "mode": 33204,
+            "size": 121,
+            "tag": "initial"
+        },
+        "l2bin_defaults_SFREFL.par": {
+            "checksum": "c0bdffd3147fa8d72c19de1acd966ca413fbd92633534e9988b4b111a46565e7",
+            "mode": 33204,
+            "size": 29,
+            "tag": "initial"
+        },
+        "l2bin_defaults_SVTEST.par": {
+            "checksum": "b29220c1f6dbd4b909aa04c3a6b73dc5fbf2c32b3fd0404abe261777661a24b7",
+            "mode": 33204,
+            "size": 134,
+            "tag": "initial"
+        },
+        "l2brsgen_defaults.par": {
+            "checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "mode": 33204,
+            "size": 0,
+            "tag": "initial"
+        },
+        "l3mapgen_defaults.par": {
+            "checksum": "5413186a7715831b38201b438eb0d4adf7e95011d6f36103d05ad87daa4aa13a",
+            "mode": 33204,
+            "size": 39,
+            "tag": "initial"
+        },
+        "l3mapgen_defaults_SFREFL.par": {
+            "checksum": "85d37f0656e5940837c712b25ce9708e0f3d145db83660f4bfbb25fdc82758f9",
+            "mode": 33204,
+            "size": 96,
+            "tag": "initial"
+        },
+        "lac/msl12_defaults.par": {
+            "checksum": "60113d0e2ef47ba224f9e7616cb80ca15f33ec42c8216b7e5d3d1534fe76a173",
+            "mode": 33204,
+            "size": 150,
+            "tag": "initial"
+        },
+        "lac/seawifs_lac_filter.dat": {
+            "checksum": "760ae564a254598a421b788190342c137f63bdfdc0fbd0126aed0934e6ac5c31",
+            "mode": 33204,
+            "size": 1028,
+            "tag": "initial"
+        },
+        "msl12_defaults.par": {
+            "checksum": "f7b4bb8a439d97a03f51b1bda30026278f217703dd1811ecf9beb6a66912f0ff",
+            "mode": 33204,
+            "size": 1937,
+            "tag": "T2022.0"
+        },
+        "msl12_defaults_CHLOCI.par": {
+            "checksum": "690d03327a9d34eac650af101beb0ccd30f0569c72955c75249555d750e17007",
+            "mode": 33204,
+            "size": 23,
+            "tag": "initial"
+        },
+        "msl12_defaults_GIOPGSM.par": {
+            "checksum": "24d27cd471fbc2b609c5611dd13d435943c05dd2c605d1355d301e0ef90ce935",
+            "mode": 33204,
+            "size": 389,
+            "tag": "initial"
+        },
+        "msl12_defaults_GSM.par": {
+            "checksum": "e99e20d599f1a5cc2818c7870e41965d2ef38afcd5e2670b8566561ddac45102",
+            "mode": 33204,
+            "size": 41,
+            "tag": "initial"
+        },
+        "msl12_defaults_IOP.par": {
+            "checksum": "002fabcde09199d66618fe36c3196e82b821be523ad2d3c605a3f12e4671d5c0",
+            "mode": 33204,
+            "size": 912,
+            "tag": "initial"
+        },
+        "msl12_defaults_KDLEE.par": {
+            "checksum": "c6ee4bfd6b8497946c7f2d2f1d4d780269294e0d4278be35e67d563f876cef77",
+            "mode": 33204,
+            "size": 50,
+            "tag": "initial"
+        },
+        "msl12_defaults_KDMOREL.par": {
+            "checksum": "fb4b8b3af959cb0020e3181f2afa2bf5da1b7abb2108d8c1d3e758e095ab3a46",
+            "mode": 33204,
+            "size": 32,
+            "tag": "initial"
+        },
+        "msl12_defaults_LAND.par": {
+            "checksum": "392f325298c8f6ce0492d8c1be8c3c370bdb17fb34edc7d9854bb14e4f595ddc",
+            "mode": 33204,
+            "size": 307,
+            "tag": "initial"
+        },
+        "msl12_defaults_OC.par": {
+            "checksum": "db1ac2c94443700192b963eca0de2123009335b55eff46d74b4da9061010bbda",
+            "mode": 33204,
+            "size": 112,
+            "tag": "initial"
+        },
+        "msl12_defaults_OCTEST.par": {
+            "checksum": "2899a4e983ca3673b0e3e59a5eb9e7de3298cbc45321130f296b2bad4812ac31",
+            "mode": 33204,
+            "size": 148,
+            "tag": "initial"
+        },
+        "msl12_defaults_OCTEST1.par": {
+            "checksum": "5897aad2a5c07c06f8b87fb6851b41fb081de31612352fe4e29751aa64c806c7",
+            "mode": 33204,
+            "size": 100,
+            "tag": "initial"
+        },
+        "msl12_defaults_OCTEST2.par": {
+            "checksum": "1339c96fed05d7eb4f2d5bdbc2b1504a75bfafd6ae6f15dd879df0afd0471e75",
+            "mode": 33204,
+            "size": 110,
+            "tag": "initial"
+        },
+        "msl12_defaults_OCTEST4.par": {
+            "checksum": "32d1a4c4d544d0db81c582bec3b6046d3d1f112d0eeb63358037ae6462417a40",
+            "mode": 33204,
+            "size": 171,
+            "tag": "initial"
+        },
+        "msl12_defaults_OWT.par": {
+            "checksum": "392d8cd184662cb318522c1de384b7d1406162e7725caa2756a7804273147273",
+            "mode": 33204,
+            "size": 30,
+            "tag": "initial"
+        },
+        "msl12_defaults_QAA.par": {
+            "checksum": "f6ce9eb18c937cc2e8ec40dee8e8b19cd3f4c2c768481942bc51405b448a72f8",
+            "mode": 33204,
+            "size": 171,
+            "tag": "initial"
+        },
+        "msl12_defaults_SFREFL.par": {
+            "checksum": "09e90dd82bc130a20b43c7eccd7f3c6667c05a5183e89e20e1ad089988ad90ae",
+            "mode": 33204,
+            "size": 124,
+            "tag": "initial"
+        },
+        "msl12_defaults_SVTEST.par": {
+            "checksum": "ff2cee37f339b5aa39855461c7b115a099a447afa7d8921a52dbf13883d75b17",
+            "mode": 33204,
+            "size": 114,
+            "tag": "initial"
+        },
+        "msl12_defaults_XM.par": {
+            "checksum": "bad3ac1c125074c8f79295605ee5deb405d274afeab0e0ba467b500475e73865",
+            "mode": 33204,
+            "size": 146,
+            "tag": "initial"
+        },
+        "msl12_defaults_ZLEE.par": {
+            "checksum": "5a5477dc2136a8cf3621e1cbdbb056a95449a2d83a5db073cc6de13ac64c711f",
+            "mode": 33204,
+            "size": 25,
+            "tag": "initial"
+        },
+        "msl12_sensor_info.dat": {
+            "checksum": "9a892bafebe60552923779eb7b5a0e2bceb6a2be01dfa376af62bfbf0f293601",
+            "mode": 33204,
+            "size": 6295,
+            "tag": "initial"
+        },
+        "nav/HARG_id.dat": {
+            "checksum": "51dcc93fd1078a7b40b25142d8dc9209ff7ae52a3423784c1f346763578bc861",
+            "mode": 33204,
+            "size": 153,
+            "tag": "initial"
+        },
+        "nav/HARM_id.dat": {
+            "checksum": "bb0c6f7b36a4901a06d10d22604e169bbe5fb32e8eb9dc831640b9a0d64e9df5",
+            "mode": 33204,
+            "size": 129,
+            "tag": "initial"
+        },
+        "nav/HAWI_id.dat": {
+            "checksum": "1e9be7464fa34ce918fe10d6cf05234d74d2d8aaf0c147d93729aade146f00eb",
+            "mode": 33204,
+            "size": 154,
+            "tag": "initial"
+        },
+        "nav/HAZO_id.dat": {
+            "checksum": "0fa401630bd90c4c60618203edacb96aaec117437f3598bd2fe28ea590d9b9ee",
+            "mode": 33204,
+            "size": 126,
+            "tag": "initial"
+        },
+        "nav/HBAR_id.dat": {
+            "checksum": "8ce757a366c655fffd771b29494654558f22a5bcea53ff121f990f87146cddf3",
+            "mode": 33204,
+            "size": 153,
+            "tag": "initial"
+        },
+        "nav/HBAS_id.dat": {
+            "checksum": "a6a0e1ee9e632e3feec79ed73628b786c6e4b6fac11b22bf9ff312847d682839",
+            "mode": 33204,
+            "size": 161,
+            "tag": "initial"
+        },
+        "nav/HBBS_id.dat": {
+            "checksum": "757d6778efd7e49b9c6bba435cadf0eb3ea1bab6fb03b90eef1e54defde1e56f",
+            "mode": 33204,
+            "size": 154,
+            "tag": "initial"
+        },
+        "nav/HBGU_id.dat": {
+            "checksum": "154d2b5831fcc199cfe5e099893ac6ed598c05457a80b55f23cbd28917d1112f",
+            "mode": 33204,
+            "size": 135,
+            "tag": "initial"
+        },
+        "nav/HBHR_id.dat": {
+            "checksum": "d788387d1aa9250fe601f1527b2d576e21fc3e76c2b12b43d8a5f3bfbf3ad7c9",
+            "mode": 33204,
+            "size": 106,
+            "tag": "initial"
+        },
+        "nav/HBIO_id.dat": {
+            "checksum": "fcda5ab1d12314ff1a890f703ba2eb89fb086945c4a06d3ee99d1f3afeb16c12",
+            "mode": 33204,
+            "size": 144,
+            "tag": "initial"
+        },
+        "nav/HBIU_id.dat": {
+            "checksum": "98209fcab694fbedd81ac4911e8134b10255af74bae3970eb65a6da7d8237464",
+            "mode": 33204,
+            "size": 126,
+            "tag": "initial"
+        },
+        "nav/HBOL_id.dat": {
+            "checksum": "cc6c42127392340a52a6f60bcc44f17b3cfa5e812909bd14c4208be5c73a579a",
+            "mode": 33204,
+            "size": 158,
+            "tag": "initial"
+        },
+        "nav/HBRL_id.dat": {
+            "checksum": "5ebf1b27d898ab632894d4dbf8b9f7677e9a9260610d5e8fe2fe211e075a6ed1",
+            "mode": 33204,
+            "size": 159,
+            "tag": "initial"
+        },
+        "nav/HCAL_id.dat": {
+            "checksum": "9b868b894072f0ae024a9564cc8d6d7cbd28890f61e26619e40b34a3b3ad6556",
+            "mode": 33204,
+            "size": 142,
+            "tag": "initial"
+        },
+        "nav/HCAN_id.dat": {
+            "checksum": "b483367fbcaf9473fa0d3f11d4b0f1a4e9c043e0f69ebb1027a3c653879c63bf",
+            "mode": 33204,
+            "size": 158,
+            "tag": "initial"
+        },
+        "nav/HCAR_id.dat": {
+            "checksum": "5ece8a40aaf45f1c75acb1b876b352b707f7bb6b34217118f8f6bb03389905e4",
+            "mode": 33204,
+            "size": 107,
+            "tag": "initial"
+        },
+        "nav/HCHL_id.dat": {
+            "checksum": "432516bcb335f8cb9f8312561edabbb63beb60e904efe3f2c5ac28f2ac3d5a52",
+            "mode": 33204,
+            "size": 157,
+            "tag": "initial"
+        },
+        "nav/HCLE_id.dat": {
+            "checksum": "759e061ab4d4f73e5459a3f4142369fcca887ded1184c7f36bc14c8c8a9659c0",
+            "mode": 33204,
+            "size": 122,
+            "tag": "initial"
+        },
+        "nav/HCNR_id.dat": {
+            "checksum": "3eea17854ac2fbe5482173d02947939231db6e0b56ca66815d561ea2e3ce6bb5",
+            "mode": 33204,
+            "size": 146,
+            "tag": "initial"
+        },
+        "nav/HCON_id.dat": {
+            "checksum": "faf176a7d1d154eaa489ec59ddbdc512a2cf8793f1632c1deebfccd7dc36ef7a",
+            "mode": 33204,
+            "size": 142,
+            "tag": "initial"
+        },
+        "nav/HCOS_id.dat": {
+            "checksum": "997418bbb7e54c056d2bef5731747ed936c8f55b9634c1b06f3476a42e8d892c",
+            "mode": 33204,
+            "size": 134,
+            "tag": "initial"
+        },
+        "nav/HCRI_id.dat": {
+            "checksum": "53cfb18cacda3146e68362862ec344bbb9200964b81f2ea2c95ec3335a38f7e3",
+            "mode": 33204,
+            "size": 113,
+            "tag": "initial"
+        },
+        "nav/HCSC_id.dat": {
+            "checksum": "b928969d48f023c62c12df64b2d3d7e09dd217fb04a8338268ebf7f208626c5c",
+            "mode": 33204,
+            "size": 131,
+            "tag": "initial"
+        },
+        "nav/HDEN_id.dat": {
+            "checksum": "f0105be0bba902d21d9e2fba8e93ec19ca6e62bd74d59eb67059df806451635b",
+            "mode": 33204,
+            "size": 135,
+            "tag": "initial"
+        },
+        "nav/HDLR_id.dat": {
+            "checksum": "3699c89a7a79114cc549338026dbf19b59679baa6654d2b7fe8b882cf24be277",
+            "mode": 33204,
+            "size": 136,
+            "tag": "initial"
+        },
+        "nav/HDUN_id.dat": {
+            "checksum": "0de1cbf80177d1fb25ba5c7a9acec70f0721173913749e968c5de6419cfcbd34",
+            "mode": 33204,
+            "size": 140,
+            "tag": "initial"
+        },
+        "nav/HECB_id.dat": {
+            "checksum": "b2f8be579e4f3b6798f0e4e52f673a63b8aae099785944b74b3428d5ba2ff8ba",
+            "mode": 33204,
+            "size": 136,
+            "tag": "initial"
+        },
+        "nav/HGAL_id.dat": {
+            "checksum": "84591b19ebafc0a1891b257ef41ea154057c354621044a52f0d810307bb69263",
+            "mode": 33204,
+            "size": 149,
+            "tag": "initial"
+        },
+        "nav/HGOA_id.dat": {
+            "checksum": "751a2ac10fa9841530611c88a8ed6d34e0a32c4293ae011e622d2ee22cd01b00",
+            "mode": 33204,
+            "size": 121,
+            "tag": "initial"
+        },
+        "nav/HGUA_id.dat": {
+            "checksum": "c235d8764150257d3f8faca18f697430aa36ed86f513110a24aa7ef0c13368e7",
+            "mode": 33204,
+            "size": 120,
+            "tag": "initial"
+        },
+        "nav/HGUY_id.dat": {
+            "checksum": "cd5c74da2d0fc15cee0158334ec301f62b65fa5669d6da029d8c05dff328d635",
+            "mode": 33204,
+            "size": 155,
+            "tag": "initial"
+        },
+        "nav/HHIG_id.dat": {
+            "checksum": "6ad27b647ce56ace66024762d4e687006f71415ebf3e065f7166d97ad50abebb",
+            "mode": 33204,
+            "size": 115,
+            "tag": "initial"
+        },
+        "nav/HHIT_id.dat": {
+            "checksum": "73af1d0eb4c6c9e3959b1db458f0f96b7342007cf64bf5620a22a32c5a62fc96",
+            "mode": 33204,
+            "size": 156,
+            "tag": "initial"
+        },
+        "nav/HHOB_id.dat": {
+            "checksum": "51c2c449f8923ff3120f2c924fedec520c9bd62363ad733a34ee4ce5a3c31497",
+            "mode": 33204,
+            "size": 158,
+            "tag": "initial"
+        },
+        "nav/HICM_id.dat": {
+            "checksum": "acc3c16bf6df3ea0c4a1f80eddff9369f07a1144928ec9b6be8a75e3256e206e",
+            "mode": 33204,
+            "size": 134,
+            "tag": "initial"
+        },
+        "nav/HIGP_id.dat": {
+            "checksum": "4f03455736a78aaf48b175b630ca3cb7cfeafeb0974ab050fe102d261ebd7b2a",
+            "mode": 33204,
+            "size": 140,
+            "tag": "initial"
+        },
+        "nav/HIMB_id.dat": {
+            "checksum": "988631f727c9c925ac34435f040d129eb8ed9bb551c87606c4282e90aa760ff8",
+            "mode": 33204,
+            "size": 140,
+            "tag": "initial"
+        },
+        "nav/HIMS_id.dat": {
+            "checksum": "38550390b8bc70f5666b30a4dc6bb7c79f9d41a9fea9f19f5ee5898893fe64bd",
+            "mode": 33204,
+            "size": 163,
+            "tag": "initial"
+        },
+        "nav/HIOS_id.dat": {
+            "checksum": "a242c8dde2a4eadfe34cc489926a68f533c3f3f0acc15f5f7c3fd9298ca9d122",
+            "mode": 33204,
+            "size": 143,
+            "tag": "initial"
+        },
+        "nav/HIPR_id.dat": {
+            "checksum": "2e384d3b808d26ef86590de2714e71303ed71fa7cd94d1f62626046544728e0d",
+            "mode": 33204,
+            "size": 149,
+            "tag": "initial"
+        },
+        "nav/HIRK_id.dat": {
+            "checksum": "b890960ef21c605a6b900288698a59db0823438568e1f4ef1963f2e0f35c8117",
+            "mode": 33204,
+            "size": 140,
+            "tag": "initial"
+        },
+        "nav/HJMS_id.dat": {
+            "checksum": "729778b269f0ed746c9b1a0eae7ac44ed5ed1c3b361ea8b134dedd11f9266427",
+            "mode": 33204,
+            "size": 155,
+            "tag": "initial"
+        },
+        "nav/HKEN_id.dat": {
+            "checksum": "2ce437c53c7319095640752f3d58975fe32340365056b655e99bb31f6ffaf3cb",
+            "mode": 33204,
+            "size": 124,
+            "tag": "initial"
+        },
+        "nav/HKIT_id.dat": {
+            "checksum": "2befa3191a3f5ab5e1f0a88d565330b97abdbc97ee996bc7e9654bfc81e67e1d",
+            "mode": 33204,
+            "size": 130,
+            "tag": "initial"
+        },
+        "nav/HKNO_id.dat": {
+            "checksum": "74945c7fc7d819c4787483e1880371d7f9737d1c19a94f02d577cb3f9f9daf19",
+            "mode": 33204,
+            "size": 107,
+            "tag": "initial"
+        },
+        "nav/HKOR_id.dat": {
+            "checksum": "9d815de6c3be55b194872e78f9080db89168b874844af44ede5beef7235001a8",
+            "mode": 33204,
+            "size": 160,
+            "tag": "initial"
+        },
+        "nav/HKUS_id.dat": {
+            "checksum": "7f2b6515abddbcbb7e6676ca934fa87d071563f71dddd700cf63ecef1ab07268",
+            "mode": 33204,
+            "size": 153,
+            "tag": "initial"
+        },
+        "nav/HLSU_id.dat": {
+            "checksum": "bc037da514040b3e4cfc53eb2f96468ecd2a8783b0e3869262bcb19a4a22b997",
+            "mode": 33204,
+            "size": 140,
+            "tag": "initial"
+        },
+        "nav/HMAL_id.dat": {
+            "checksum": "ed74b46070513ad13d1f6bfebb5acec99d2d329ad7e3e317ab49706e65a9fddf",
+            "mode": 33204,
+            "size": 159,
+            "tag": "initial"
+        },
+        "nav/HMAS_id.dat": {
+            "checksum": "99748a506a04886ce4a13dd994e1e283a22be42f51f6c67c3843948479ad0094",
+            "mode": 33204,
+            "size": 128,
+            "tag": "initial"
+        },
+        "nav/HMBR_id.dat": {
+            "checksum": "8310afd696a940a1503498c4990dcecf6dca396549df30a668ecbd6cf78f3f7d",
+            "mode": 33204,
+            "size": 156,
+            "tag": "initial"
+        },
+        "nav/HMCM_id.dat": {
+            "checksum": "6fae4736ad79eb9c17a5741e3501555710968a119c1e3fafb45e992d3e0afeac",
+            "mode": 33204,
+            "size": 147,
+            "tag": "initial"
+        },
+        "nav/HMIR_id.dat": {
+            "checksum": "e2af80a793bf3bd754ce2d8ca5e91771fb953d57734bc2943f15fac0a18a2efb",
+            "mode": 33204,
+            "size": 152,
+            "tag": "initial"
+        },
+        "nav/HMLI_id.dat": {
+            "checksum": "afb72b914da5ab45ab9c61c6812ba8f8dbd2497c15ff436afe297585494de578",
+            "mode": 33204,
+            "size": 147,
+            "tag": "initial"
+        },
+        "nav/HMLT_id.dat": {
+            "checksum": "acec469596b7411b8504a2c5743611185c8da448161241e9549c9a7e04386ccd",
+            "mode": 33204,
+            "size": 124,
+            "tag": "initial"
+        },
+        "nav/HMON_id.dat": {
+            "checksum": "0ce8387f39319a1b64d6e0f8204113adea846069322bc65e523ce6307b6c46b5",
+            "mode": 33204,
+            "size": 147,
+            "tag": "initial"
+        },
+        "nav/HMSC_id.dat": {
+            "checksum": "9f59c6aa0e576c445f31e46d85542a6ba9b298eaa2547b199e502cf2e7df7a03",
+            "mode": 33204,
+            "size": 120,
+            "tag": "initial"
+        },
+        "nav/HNAV_id.dat": {
+            "checksum": "022df85447cc32beeb5b6f520b74db363390df6e6c9b62aad24e34a090a0b8fc",
+            "mode": 33204,
+            "size": 142,
+            "tag": "initial"
+        },
+        "nav/HNBP_id.dat": {
+            "checksum": "cafbbe68473c3ff18549fab87dea318ba2ec72481ba4c59bb571c72e19cd709a",
+            "mode": 33204,
+            "size": 143,
+            "tag": "initial"
+        },
+        "nav/HNCS_id.dat": {
+            "checksum": "fbc65481a83b5e2d0dd73f8c0bf3b2cb597f3ce109b9cfe1b485192b0c3d7f17",
+            "mode": 33204,
+            "size": 127,
+            "tag": "initial"
+        },
+        "nav/HNEA_id.dat": {
+            "checksum": "22b018c87b03451f17f42f122a85ea94e930134e77386bac6a2388c160690ec1",
+            "mode": 33204,
+            "size": 155,
+            "tag": "initial"
+        },
+        "nav/HNEG_id.dat": {
+            "checksum": "d93bb5c7714ed31c848a54d176d7d88eaa229a0080b2ab787a9ab1cffa89675a",
+            "mode": 33204,
+            "size": 135,
+            "tag": "initial"
+        },
+        "nav/HNFL_id.dat": {
+            "checksum": "ad22ecc65e9a3925cbf24d5bb39bf581ecad894306d4a7745b473d6f113eaecf",
+            "mode": 33204,
+            "size": 161,
+            "tag": "initial"
+        },
+        "nav/HNOH_id.dat": {
+            "checksum": "142632664dc0f148d35bd6b962eeb53a793c82869c21ae663d05d394641b98cb",
+            "mode": 33204,
+            "size": 134,
+            "tag": "initial"
+        },
+        "nav/HNOL_id.dat": {
+            "checksum": "9f0e5f978517f7efd297f6e7cd26f213ca6a2c85558733c29f8b3558ecc07566",
+            "mode": 33204,
+            "size": 154,
+            "tag": "initial"
+        },
+        "nav/HNOR_id.dat": {
+            "checksum": "b5855419f827617648bd54baf910dce0c8ce212328ba00b7197e435580a07081",
+            "mode": 33204,
+            "size": 119,
+            "tag": "initial"
+        },
+        "nav/HNPE_id.dat": {
+            "checksum": "7ffcdcf68bb4685daf123427b618ef3b83c40f0f9e88abd4baa41329b98cd010",
+            "mode": 33204,
+            "size": 136,
+            "tag": "initial"
+        },
+        "nav/HNRC_id.dat": {
+            "checksum": "151ffe02eb3dea7fd1a0a0fa5b193cd0021fa3861f69b96f29a3f261b7a1a3d2",
+            "mode": 33204,
+            "size": 131,
+            "tag": "initial"
+        },
+        "nav/HNRI_id.dat": {
+            "checksum": "8c22003e44a3235e217c0985df52070ed6fb12590544d89b88765d841452c827",
+            "mode": 33204,
+            "size": 178,
+            "tag": "initial"
+        },
+        "nav/HNSG_id.dat": {
+            "checksum": "919b2066f0d1945410f9ad25e7ae80134b09fad4525513553a02da9b586a4358",
+            "mode": 33204,
+            "size": 152,
+            "tag": "initial"
+        },
+        "nav/HNTO_id.dat": {
+            "checksum": "c8dee211fefd85518fa3fdee04c45536afb5505d8cd563788e8b2fc73e1c2abd",
+            "mode": 33204,
+            "size": 174,
+            "tag": "initial"
+        },
+        "nav/HNTS_id.dat": {
+            "checksum": "c69692dff4e6d2555d6229a52df922149d60f6d401854d394080c3ec16b15668",
+            "mode": 33204,
+            "size": 110,
+            "tag": "initial"
+        },
+        "nav/HNTU_id.dat": {
+            "checksum": "a6658ab3f9a66a9a7372985334f60ae63b18f495359fbc30334e279f59a0bc76",
+            "mode": 33204,
+            "size": 143,
+            "tag": "initial"
+        },
+        "nav/HOMA_id.dat": {
+            "checksum": "385803b4f6e1bfb1cdd857f89bf966a6263f251df42c14126b7a073bc5e87570",
+            "mode": 33204,
+            "size": 121,
+            "tag": "initial"
+        },
+        "nav/HORS_id.dat": {
+            "checksum": "bda88c50b3fa867438a94226bfe1123775ec147065e624f309830637548eb1b5",
+            "mode": 33204,
+            "size": 133,
+            "tag": "initial"
+        },
+        "nav/HPAL_id.dat": {
+            "checksum": "24a48ff4ba87bbc76cce94536f9855d12ca72417819859ee92e20738baca1b53",
+            "mode": 33204,
+            "size": 142,
+            "tag": "initial"
+        },
+        "nav/HPEK_id.dat": {
+            "checksum": "de162223e1b5edced772be7ad3913677889acf56f15c9bc71d0f24cb72f98ba6",
+            "mode": 33204,
+            "size": 127,
+            "tag": "initial"
+        },
+        "nav/HPOR_id.dat": {
+            "checksum": "a75df2e649988ac83598d5fff883502c29a9163fa4b59ab902a6e8441292061b",
+            "mode": 33204,
+            "size": 132,
+            "tag": "initial"
+        },
+        "nav/HPRC_id.dat": {
+            "checksum": "b32459180a72ebc593ca3f3986fe2fd273391bc2c409e231e489b16da84d1b92",
+            "mode": 33204,
+            "size": 151,
+            "tag": "initial"
+        },
+        "nav/HPRE_id.dat": {
+            "checksum": "86b67fd739ed9a98638699eb759401b45b737b198e201730f50a8079e9220a2d",
+            "mode": 33204,
+            "size": 144,
+            "tag": "initial"
+        },
+        "nav/HRBN_id.dat": {
+            "checksum": "1f5bdeaba362217eb19a293cd0da7a3452cbc300402256cd70793adfcfb6eca0",
+            "mode": 33204,
+            "size": 139,
+            "tag": "initial"
+        },
+        "nav/HRES_id.dat": {
+            "checksum": "9ecc7c6ec1050f4ea2c841d4cca944d81684b57439f6aa10b4f052f0e69179e7",
+            "mode": 33204,
+            "size": 131,
+            "tag": "initial"
+        },
+        "nav/HREU_id.dat": {
+            "checksum": "d02d94fbce0275fc3b742b6804987f3bf282a17b78960fdf9c2ae46af1c1f3e0",
+            "mode": 33204,
+            "size": 146,
+            "tag": "initial"
+        },
+        "nav/HROC_id.dat": {
+            "checksum": "eba9327d94681448bc78563f00a300fc8756a5d8ab959820ccb301067e417605",
+            "mode": 33204,
+            "size": 147,
+            "tag": "initial"
+        },
+        "nav/HROM_id.dat": {
+            "checksum": "9bba5beb25514c99d57bbaf6e1665beddd36207af016405f525f88eba2917452",
+            "mode": 33204,
+            "size": 127,
+            "tag": "initial"
+        },
+        "nav/HROT_id.dat": {
+            "checksum": "8a61a9538f3213a0e2b30dfed85765c8f3561916d516f600f1ff71208c3c33ab",
+            "mode": 33204,
+            "size": 98,
+            "tag": "initial"
+        },
+        "nav/HRUS_id.dat": {
+            "checksum": "6a46432ddc934d13179dba35801868cfa82a481904c4d67d1aa519471e2e5197",
+            "mode": 33204,
+            "size": 164,
+            "tag": "initial"
+        },
+        "nav/HRUT_id.dat": {
+            "checksum": "1f0f4f3996c1f60803607b4d886291bd0a055376c785155a4466688d34bc1e29",
+            "mode": 33204,
+            "size": 181,
+            "tag": "initial"
+        },
+        "nav/HSAM_id.dat": {
+            "checksum": "c105daefecddcc6e0d2834b74e40a78502cbdfae84bb3aae6b453978a25248b0",
+            "mode": 33204,
+            "size": 139,
+            "tag": "initial"
+        },
+        "nav/HSAN_id.dat": {
+            "checksum": "5ca0fef5003e664828ae10a0fb44bcc8e9b5a6510c87fe32445fc1d1ef7e0e48",
+            "mode": 33204,
+            "size": 136,
+            "tag": "initial"
+        },
+        "nav/HSNG_id.dat": {
+            "checksum": "3a27a5ea785100292321a32e1dddc2cbcc45d6f2909a6af77506dcd5c30de159",
+            "mode": 33204,
+            "size": 170,
+            "tag": "initial"
+        },
+        "nav/HSPZ_id.dat": {
+            "checksum": "ae1995e15bb7496684ab087a058a5eb0b1388ad0052ca2afa77a6e43e82fe603",
+            "mode": 33204,
+            "size": 116,
+            "tag": "initial"
+        },
+        "nav/HSSC_id.dat": {
+            "checksum": "99353e970e4a8997b40eb8eed4f4bb70a850a242fe85f585b588dd446b60fa68",
+            "mode": 33204,
+            "size": 118,
+            "tag": "initial"
+        },
+        "nav/HSTR_id.dat": {
+            "checksum": "2851c66efacb5443fa26f3c18154aed2576df1cd889a5c5b8516a5378709d279",
+            "mode": 33204,
+            "size": 113,
+            "tag": "initial"
+        },
+        "nav/HSYO_id.dat": {
+            "checksum": "8661a48d851115e33944b929c3d970b58789b2515052dae0ce7f432a78cbbbb9",
+            "mode": 33204,
+            "size": 144,
+            "tag": "initial"
+        },
+        "nav/HTFI_id.dat": {
+            "checksum": "aff7ec80f01f212b4643a7622e896e2acce74b7d67a7755c6a78e041f980129e",
+            "mode": 33204,
+            "size": 155,
+            "tag": "initial"
+        },
+        "nav/HTNB_id.dat": {
+            "checksum": "5c1229df57f8a968bf3b90dca51d92777615bb96ca8af455ed2c0072a3def033",
+            "mode": 33204,
+            "size": 164,
+            "tag": "initial"
+        },
+        "nav/HTOK_id.dat": {
+            "checksum": "c68d6b72aab3a3dd6c50c4feb3742d9e54d444c0d3453bf9f4127d1f7588a0f7",
+            "mode": 33204,
+            "size": 147,
+            "tag": "initial"
+        },
+        "nav/HTOW_id.dat": {
+            "checksum": "67311ab562cc2bdc8bf14ae74d0c5b712e35a903e2837b9b1cab723d2001f8ee",
+            "mode": 33204,
+            "size": 142,
+            "tag": "initial"
+        },
+        "nav/HTUR_id.dat": {
+            "checksum": "85490568a44dd88bb6801d18e35bc5669602d0db207ff5463b41bbd2b49af859",
+            "mode": 33204,
+            "size": 149,
+            "tag": "initial"
+        },
+        "nav/HUAF_id.dat": {
+            "checksum": "6566c9049a02e9fb4fa2f806663b8d52994c0ff1f293397d3001e47c552ccca5",
+            "mode": 33204,
+            "size": 175,
+            "tag": "initial"
+        },
+        "nav/HUKR_id.dat": {
+            "checksum": "c2eb5e5a8348a92ac1890ee2b6fa21da92df238c394d8f4e2073c7c5fdd266a0",
+            "mode": 33204,
+            "size": 155,
+            "tag": "initial"
+        },
+        "nav/HUME_id.dat": {
+            "checksum": "164a4c794a9fa3d034d953e6c630e6826193d1bb1f31c054eb3119e383b0a567",
+            "mode": 33204,
+            "size": 150,
+            "tag": "initial"
+        },
+        "nav/HUMI_id.dat": {
+            "checksum": "0b4915d23e120bdfb8cd7d6dbfb3c363b2ea2663e33bc0509b5a3c6bfaa1276e",
+            "mode": 33204,
+            "size": 156,
+            "tag": "initial"
+        },
+        "nav/HUMX_id.dat": {
+            "checksum": "4a311dd47b1facf38120581da7ec41acee8d98b72f9589287cab16edaf151d90",
+            "mode": 33204,
+            "size": 131,
+            "tag": "initial"
+        },
+        "nav/HUND_id.dat": {
+            "checksum": "4737cbcdf5aa74792a7f44db6662f1f0547a59a6bb8b2070f0260881f6004352",
+            "mode": 33204,
+            "size": 141,
+            "tag": "initial"
+        },
+        "nav/HUNE_id.dat": {
+            "checksum": "eaeae8a589d7dd6ef82c7149c81f8641acc128c9c4d7d7ebcc3118cbb80c35cb",
+            "mode": 33204,
+            "size": 127,
+            "tag": "initial"
+        },
+        "nav/HUNY_id.dat": {
+            "checksum": "dbc165fca2697711324f298b76c09cf4910367969c2adae721aaff3ae23449c3",
+            "mode": 33204,
+            "size": 107,
+            "tag": "initial"
+        },
+        "nav/HUOH_id.dat": {
+            "checksum": "8168e86cdc4c20aeecd503df75db967207b64b042b76cef2ede29f50cda58b5a",
+            "mode": 33204,
+            "size": 151,
+            "tag": "initial"
+        },
+        "nav/HUPR_id.dat": {
+            "checksum": "6bf052b55fb8a31f9f90fa33c47a2e8e2c22d0cc999fb6ec09b226a0521dce8c",
+            "mode": 33204,
+            "size": 139,
+            "tag": "initial"
+        },
+        "nav/HURG_id.dat": {
+            "checksum": "069f837d290e7792cb6b415bed2ef9019670d63bcc7217f1cbb5d18f0c3150b2",
+            "mode": 33204,
+            "size": 120,
+            "tag": "initial"
+        },
+        "nav/HUSC_id.dat": {
+            "checksum": "713974ebeab8cd9396f7b151aa451364d722a439c280bd17b596f443df1a414d",
+            "mode": 33204,
+            "size": 161,
+            "tag": "initial"
+        },
+        "nav/HUSF_id.dat": {
+            "checksum": "4d19458888bb674f6db60c72450a9777aa1af527114de3846c89ef9c4483f787",
+            "mode": 33204,
+            "size": 171,
+            "tag": "initial"
+        },
+        "nav/HUST_id.dat": {
+            "checksum": "4d4fe052cf2ee86bd97d097f9d5ff2d91a5a1e7bfd2003b6831d0c4c1e1f2d8f",
+            "mode": 33204,
+            "size": 128,
+            "tag": "initial"
+        },
+        "nav/HUTX_id.dat": {
+            "checksum": "1af3ee5dbb557ed31646a07709fb77b1711241a1a0cdaaf6cac61279d95c6802",
+            "mode": 33204,
+            "size": 131,
+            "tag": "initial"
+        },
+        "nav/HVEN_id.dat": {
+            "checksum": "768a824127e080d4b1dc94ab2145defe9053dd9c70d67ed00cf962be432f1beb",
+            "mode": 33204,
+            "size": 155,
+            "tag": "initial"
+        },
+        "nav/HWAS_id.dat": {
+            "checksum": "f9d763429356634af6c0c3b07acf249dbf2d312aeae569f1c294f332f2d8898b",
+            "mode": 33204,
+            "size": 142,
+            "tag": "initial"
+        },
+        "nav/HWFF_id.dat": {
+            "checksum": "eee7ed2cfff08bdf5dd4984a5a2fe75e77fb62787b3c16e37a801806af1e800e",
+            "mode": 33204,
+            "size": 144,
+            "tag": "initial"
+        },
+        "nav/HWNZ_id.dat": {
+            "checksum": "609ead61874e82ab2a7a5bccd49690839f7d51e1d3e3201d271f362eb7debb3a",
+            "mode": 33204,
+            "size": 140,
+            "tag": "initial"
+        },
+        "nav/HYOK_id.dat": {
+            "checksum": "1722ed95d5c233fa6828008f3ff145d1363b5842ec0ebcce76aeec56f6a127e1",
+            "mode": 33204,
+            "size": 135,
+            "tag": "initial"
+        },
+        "nav/HZTI_id.dat": {
+            "checksum": "db449ca45de3d1eab9f3f7123682f89a2378aa158d8f2f5fccac29d369adb9f9",
+            "mode": 33204,
+            "size": 113,
+            "tag": "initial"
+        },
+        "nav/MLAC_id.dat": {
+            "checksum": "584d0e1cc21f443f7a5b10eeb5ec6923ce188fbbd4eb52e8a281faaa290e434b",
+            "mode": 33204,
+            "size": 191,
+            "tag": "initial"
+        },
+        "nav/alternate_station_id.dat": {
+            "checksum": "62c56cd192083614f0b90e0f62442144c8dd9b20f6fd76f8074606755ed78aa4",
+            "mode": 33204,
+            "size": 149,
+            "tag": "initial"
+        },
+        "nav/elements.pl": {
+            "checksum": "58a317382f169dc08eb75ef291be9a61e42764f4a8af016d11fc81655e6d9a56",
+            "mode": 33204,
+            "size": 995072,
+            "tag": "initial"
+        },
+        "nav/hs_cal.dat": {
+            "checksum": "9f1ce53df1211ac8474fcb2522978496870d3b60f3af7060001c23fb37681eeb",
+            "mode": 33204,
+            "size": 35706,
+            "tag": "initial"
+        },
+        "nav/navctl.dat": {
+            "checksum": "97796d18b003c1883fc126ae8b92e9dbf64f5f41e653a7a9caad1f6ac7e053a6",
+            "mode": 33204,
+            "size": 2833,
+            "tag": "initial"
+        },
+        "nav/navqc.dat": {
+            "checksum": "2721697e70b25988b1663e0223471749c987208ca9d086842b1815a3c20b745a",
+            "mode": 33204,
+            "size": 1106,
+            "tag": "initial"
+        },
+        "nav/orbctl.nl": {
+            "checksum": "87233446c38c67ba571abdf42595722ae5d9cda7761eb47b47c8775810a29713",
+            "mode": 33204,
+            "size": 359,
+            "tag": "initial"
+        },
+        "nav/orbit_table.dat": {
+            "checksum": "ada06c5e9ef6fbd148af969bc9297cd94e2240b5ed01b174f6d427b5b05f3291",
+            "mode": 33204,
+            "size": 4738,
+            "tag": "initial"
+        },
+        "nav/station_id.dat": {
+            "checksum": "919b2066f0d1945410f9ad25e7ae80134b09fad4525513553a02da9b586a4358",
+            "mode": 33204,
+            "size": 152,
+            "tag": "initial"
+        },
+        "nav/wallops_id.dat": {
+            "checksum": "3aa3473339d298efbdbc2937083c83552e23bf3125026dd6fca331ce6a198024",
+            "mode": 33204,
+            "size": 160,
+            "tag": "initial"
+        },
+        "ocr_vc/seawifs_ocr_vc_nn_531.dat": {
+            "checksum": "77a0ce854961166d1eda2fc1e162d1ae8e2d52613a9eb2a7107061c3bf88b798",
+            "mode": 33204,
+            "size": 2457,
+            "tag": "initial"
+        },
+        "qc/l1.ctl": {
+            "checksum": "158d5e7464b3b391bf81c25b17e76518462501e50ca56a98b0e8ee3e947fa7c7",
+            "mode": 33204,
+            "size": 5188,
+            "tag": "initial"
+        },
+        "qc/l1_brs.fmt": {
+            "checksum": "169fe651fac38422a59ad24e0522f46d7b740f483ca2e40fae7ed7d07890c99b",
+            "mode": 33204,
+            "size": 11682,
+            "tag": "initial"
+        },
+        "qc/l1_gac.ctl": {
+            "checksum": "9ceacd0c90b89a8191923d88254c0b4dab0226886d5e0d5c075a361ada7b6ae2",
+            "mode": 33204,
+            "size": 1513,
+            "tag": "initial"
+        },
+        "qc/l1_gac.fmt": {
+            "checksum": "add7b4ce1a6067426dcb6425a88e82cb74328993bf6b005fe02521ad3f556edb",
+            "mode": 33204,
+            "size": 17639,
+            "tag": "initial"
+        },
+        "qc/l1_lac.ctl": {
+            "checksum": "8e2ff8c0cad5cf423f6ffb17b7a8de15ad7b7bee705d1a754527cb16c4f55f78",
+            "mode": 33204,
+            "size": 1547,
+            "tag": "initial"
+        },
+        "qc/l1_lac.fmt": {
+            "checksum": "59e9ea27141ee2ba7347da98e274e2e25bb780d00f61d1138c6f8036ce195bdc",
+            "mode": 33204,
+            "size": 17219,
+            "tag": "initial"
+        },
+        "qc/l1_other.fmt": {
+            "checksum": "6570cfbea130f40f6c6f1e820f7195dc4e5b8679ba727c371125d57704b30d2d",
+            "mode": 33204,
+            "size": 17037,
+            "tag": "initial"
+        },
+        "qc/l2_brs.fmt": {
+            "checksum": "e2ff322e29ad729d0331a4be00b204898000174b75f9ea7514abfb3431252f71",
+            "mode": 33204,
+            "size": 10884,
+            "tag": "initial"
+        },
+        "qc/l2_gac.ctl": {
+            "checksum": "2e619e5d718398dd2b6caac962d5a552e8bb20b8809cdcca09c3ba07bd852269",
+            "mode": 33204,
+            "size": 1653,
+            "tag": "initial"
+        },
+        "qc/l2_gac.fmt": {
+            "checksum": "ffd6f900858275ee392c63346ebd3d366aa51cd05099cafd111831fa72dfbe24",
+            "mode": 33204,
+            "size": 26511,
+            "tag": "initial"
+        },
+        "qc/l2_gac_v4p0.ctl": {
+            "checksum": "6184537ac1cb72bb92782e9b1e01dc623a9e94d0b1b371054493a37dc1692497",
+            "mode": 33204,
+            "size": 2359,
+            "tag": "initial"
+        },
+        "qc/l2_gac_v4p0_r4.ctl": {
+            "checksum": "552c5f11b6e932d02cbe0fe3459801c5c715c2657e1fbabf4f12bff8f25fd31c",
+            "mode": 33204,
+            "size": 2479,
+            "tag": "initial"
+        },
+        "qc/l2_lac.fmt": {
+            "checksum": "48e382cb276f0691f9159c954934fc30f03833298831edc6fae0ae51abd90a18",
+            "mode": 33204,
+            "size": 26199,
+            "tag": "initial"
+        },
+        "qc/l3.ctl_noclm": {
+            "checksum": "7454b6de7f47731ddd6350163273a8a34f48fe23ab838d730fd08275f3f90782",
+            "mode": 33204,
+            "size": 3058,
+            "tag": "initial"
+        },
+        "qc/l3_bin_CDOM.fmt": {
+            "checksum": "12391ccc6a8bd8dcd6bb015e7ac9a28f1762039ed18e494e06382a15b3e95fab",
+            "mode": 33204,
+            "size": 5696,
+            "tag": "initial"
+        },
+        "qc/l3_bin_CHL.fmt": {
+            "checksum": "3b3af607e0ee4b81e9328fdfedda737d905694a5ec8a515b2890dd7bde1419d3",
+            "mode": 33204,
+            "size": 5684,
+            "tag": "initial"
+        },
+        "qc/l3_bin_KD490.fmt": {
+            "checksum": "895b6cfda89ae8b06ee9d9bdb2f92bbd67c37ce5f4c84205720792b30c8162cc",
+            "mode": 33204,
+            "size": 5679,
+            "tag": "initial"
+        },
+        "qc/l3_bin_PAR.fmt": {
+            "checksum": "53481b59dce477fcbe307a97b30eff5a8389c19a92b2d621a313ac4e52f23d79",
+            "mode": 33204,
+            "size": 5684,
+            "tag": "initial"
+        },
+        "qc/l3_bin_PIC.fmt": {
+            "checksum": "d4be209d1f9a6f337789762ee7877af9853ab947318771bf002d8ff3a771fba9",
+            "mode": 33204,
+            "size": 5677,
+            "tag": "initial"
+        },
+        "qc/l3_bin_POC.fmt": {
+            "checksum": "f5dd9efcfd553b71768ad1b5bc123f8fc454d7c1f5f298e69d1a10c724b00429",
+            "mode": 33204,
+            "size": 5676,
+            "tag": "initial"
+        },
+        "qc/l3_bin_RRS.fmt": {
+            "checksum": "efca0a194dcaeaf2ed7abd84ece9f46aaaa90e02fcb790289755f547e157349e",
+            "mode": 33204,
+            "size": 5854,
+            "tag": "initial"
+        },
+        "qc/l3_brs.fmt": {
+            "checksum": "cee0d2b20fd26d1bc2c93c4d08651c57c016b36e8fd2e83e5a8647c0f58b842f",
+            "mode": 33204,
+            "size": 6529,
+            "tag": "initial"
+        },
+        "qc/l3_smi.fmt": {
+            "checksum": "0062843adcfb48ef899dba8cc307258d3bf3f18581b3b13e63d8f7cd62cf2a47",
+            "mode": 33204,
+            "size": 7236,
+            "tag": "initial"
+        },
+        "qc/l3_v4p0.ctl": {
+            "checksum": "a7358a3bea45392620cd3518a5ce87b4f9aefc9d91526af25656a80db735412a",
+            "mode": 33204,
+            "size": 2964,
+            "tag": "initial"
+        },
+        "raman.nc": {
+            "checksum": "bb9bccddf81cf16cde3e1c91d7534044a602778c11d9ec31f145480fb041f392",
+            "mode": 33277,
+            "size": 20014,
+            "tag": "T2021.16"
+        },
+        "rayleigh/rayleigh_seawifs_412_iqu.hdf": {
+            "checksum": "acdb4f476b1d06f561f012d4876eb9cf8e912b1eeea1daab7e82946dc1ff451e",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_443_iqu.hdf": {
+            "checksum": "a6a022a58fd824b4e3b21b46a79a99ab67045cc6c85bf7e12134924fa48a6acf",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_490_iqu.hdf": {
+            "checksum": "6fcaee81b1aad822fdff74586fc10a4a2d11bb77f0e84ea5f6c55df36daaec6b",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_510_iqu.hdf": {
+            "checksum": "7ddb59f3ffa966ab6e9bbeb4f0c070adf2e9a2fc080928559bae171c3a862e13",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_555_iqu.hdf": {
+            "checksum": "7528dc78fa4fcc8a64f8c531aa55973332b5221b562210fe79123af01d3612d8",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_670_iqu.hdf": {
+            "checksum": "fa035000ff34eca56b36d02920d11e9f6f8e7f3517bb497f077a6ec2512f9416",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_765_iqu.hdf": {
+            "checksum": "3bcbd3fd0a1b0b28a2bdb020eee3b548a371f582dbc465e4c084ecc520b76693",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "rayleigh/rayleigh_seawifs_865_iqu.hdf": {
+            "checksum": "2ba2a86110ea66b59bdef8b386e6e7992fd60896b939496e99dc4594ed1fdbe8",
+            "mode": 33204,
+            "size": 538939,
+            "tag": "T2020.7"
+        },
+        "seawifs_aerosol_par.dat": {
+            "checksum": "ade6d5c410a1e327c1e8d9499d40577f8f0eb9a4d7bd8b1e816e8f610f2f1fc7",
+            "mode": 33204,
+            "size": 86505,
+            "tag": "initial"
+        },
+        "seawifs_gas_transmittance.nc": {
+            "checksum": "9d111f319c162aad6a99b45fba1c18796271a6d1929753ac2e3683f884a23eca",
+            "mode": 33204,
+            "size": 51910,
+            "tag": "T2021.20"
+        },
+        "station/station_id.dat": {
+            "checksum": "919b2066f0d1945410f9ad25e7ae80134b09fad4525513553a02da9b586a4358",
+            "mode": 33204,
+            "size": 152,
+            "tag": "initial"
+        }
+    },
+    "name": "seawifs",
+    "tags": [
+        "T2022.0",
+        "V2022.0",
+        "T2022.1",
+        "T2022.2",
+        "T2022.3",
+        "T2022.4",
+        "T2022.5",
+        "T2022.6"
+    ]
+}

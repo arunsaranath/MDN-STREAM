@@ -1,0 +1,155 @@
+!
+!  data file: navctl.dat
+!
+!  Purpose: this is a file containing all the navigation
+!  	control values.  These will go into structure
+!       /navctl_struct/ navctl
+!
+!  By: W. Robinson, GSC, 8 Mar 93
+!
+!       
+!  procatt - flag to process attitude using sensor telemetry,
+! 0 - use S/C provided pitch, roll, yaw
+! 1 - use sensor data to compute pitch, roll, yaw
+1  
+!  redoyaw - number of loops improving nadir
+!  vector with yaw value found, and yaw tolerence in degrees
+!  beyond which re-doing the computation is required
+1
+!  yawtol -
+5.0
+!
+!
+!  controls for the running fit including nfpts - # fit points and
+!  nskip - amount to move the fit range in the running fit
+!  Earth scanner data
+31
+15
+!
+!  Sun sensor data
+31
+15
+!
+!
+!  conversions and biases
+!
+!  SeaWiFS sensor offset matrix from S/C, in order of fastest index
+!  msenoff - euler sequence (0.08, 0, 0)
+1.0
+0.0    
+0.0
+0.0
+0.99999905   
+-0.00139626
+0.0   
+0.00139626      
+0.99999905
+!
+!  tiltcos - tilt axis cosine angles (0,0,1 for no problems)
+0.0
+0.0
+1.0
+!
+!  tiltcos2 - second tilt axis cosine angles 
+0.0
+0.0
+1.0
+!
+!  tiltfor - forward tilt angle
+-19.925
+!
+!  tiltaft - aft tilt angle
+19.820
+!
+!  sun_mat - x-form matrix to convert the sun vector from sensor to 
+!  S/C coordinates.  the last index is for the 3 sensors.
+!  sun 1 - euler sequence (-90, 116, 0) + (-0.08, -0.10, -0.20)
+-0.44150527     
+-0.89725854   
+0.00048231    
+0.00174533   
+-0.00139635     
+-0.99999750      
+0.89725694     
+-0.44150334    
+0.00218250
+!  sun 2 - euler sequence (90, 116, 0) + (0.53, 0.05, 0.06)
+-0.43931207      
+0.89829246    
+0.00869313   
+0.00087266   
+-0.00925019      
+0.99995685      
+0.89833413      
+0.43930068    
+0.00327981
+!  sun 3 - euler sequence (0, 180, 0) + (-0.14, -0.03, 0.12)
+-0.99999768   
+-0.00209567 
+-0.00051831   
+-0.00209439      
+0.99999481   
+-0.00244455   
+0.00052343   
+-0.00244346     
+-0.99999690
+!  sun_scal - scale factors for Sun sensor angles
+!  sun 1
+1.0
+1.0
+!  sun 2
+1.0
+1.002
+!  sun 3
+1.0
+1.0
+!
+!  sun_bias - biases for Sun sensor angles
+!  sun 1
+0.0
+-0.002
+!  sun 2
+0.0
+0.0
+!  sun 3
+0.001
+0.0
+!
+!  ear_mat - transform matrix earth sensor 1 and 2 to S/C frame
+!  ear 1 - euler sequence (180.0, 4.94, 136.40)
+-0.72148196     
+-0.68961944    
+-0.06236037     
+-0.68705780      
+0.72417196    
+-0.05938472     
+0.08611249   
+0.0
+-0.99628542
+!  ear 2 - euler sequence (0, 5.62, -133.72)
+-0.68781275     
+-0.72272587     
+0.06768304      
+0.71925193     
+-0.69113481    
+-0.07077676
+0.09793030       
+0.0
+0.99519330
+!
+!  ear1sca - ear2sca - earth sensor 1 and 2 scan cone angle in degrees
+45.
+45.
+!
+!  e1biasic - e2biasic - in-crossing angle bias in deg for earth sens 1 & 2
+0.74
+0.74
+!
+!  e1biasoc - e2biasoc - out-crossing angle bias in deg for earth sens 1 & 2
+0.74
+0.74
+!
+!  lvdbug - flag to control diagnostic output
+0
+!	and end
+

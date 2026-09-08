@@ -1,0 +1,3 @@
+l3bprod=a_412_giop=-1,a_443_giop=-1,a_490_giop=-1,a_510_giop=-1,a_555_giop=-1,a_670_giop=-1,bb_412_giop=-1,bb_443_giop=-1,bb_490_giop=-1,bb_510_giop=-1,bb_555_giop=-1,bb_670_giop=-1,aph_443_giop=-1,adg_443_giop=-1,adg_s_giop=-1,bbp_443_giop=-1,bbp_s_giop=-1,aph_unc_443_giop=-1,adg_unc_443_giop=-1,bbp_unc_443_giop=-1
+
+flaguse=ATMFAIL,LAND,HILT,HISATZEN,STRAYLIGHT,CLDICE,COCCOLITH,LOWLW,CHLWARN,CHLFAIL,NAVWARN,MAXAERITER,ATMWARN,HISOLZEN,NAVFAIL,FILTER,HIGLINT,PRODFAIL

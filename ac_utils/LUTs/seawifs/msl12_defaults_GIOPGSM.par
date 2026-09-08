@@ -1,0 +1,19 @@
+l2prod=chl_giop,a_443_giop,bb_443_giop,bbp_443_giop,aph_443_giop,adg_443_giop,aph_555_giop,adg_s_giop,bbp_s_giop,rrsdiff_giop
+
+# L-M fit
+giop_fit_opt=1
+
+# Gordon quadratic to relate bb/(a+bb) to Rrs
+giop_rrs_opt=0
+
+# GSM aph spectrum 
+giop_aph_opt=0
+
+# exponential adg function
+giop_adg_opt=1
+giop_adg_s=0.0206
+
+# power-law bbp with QAA adaptive exponent
+giop_bbp_opt=1
+giop_bbp_s=1.0337
+

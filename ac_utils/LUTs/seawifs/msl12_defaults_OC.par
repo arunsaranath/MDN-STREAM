@@ -1,0 +1,4 @@
+#
+# MSL12 OC Suite parameters for SeaWiFS
+# 
+l2prod=aot_865 angstrom Rrs_vvv chlor_a chl_ocx Kd_490 pic poc par

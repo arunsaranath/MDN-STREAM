@@ -1,0 +1,5 @@
+l2prod=a_443_qaa,aph_443_qaa,adg_443_qaa,bbp_443_qaa
+
+# These are set in $OCDATAROOT/seawifs/msl12_defaults.par
+## restrict to wavelengths
+#qaa_wave=[412,443,490,555,670]

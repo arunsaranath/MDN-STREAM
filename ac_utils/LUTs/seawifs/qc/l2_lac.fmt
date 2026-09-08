@@ -1,0 +1,397 @@
+# seawifs_l2_lac.fmt - format table for SeaWiFS L2 LAC data
+#
+# Using the new fmt_check table format of March, 2005
+#  (see ww:~/txt/QCinfo/fmt_check_tbl_25mar05.txt or
+#  http://oceancolor.gsfc.nasa.gov/staff/wayne/fmt_check_tbl.html )
+#
+#  W. Robinson, SAIC, 19 May 05 change K_490 long name
+#
+#  Attribute Section
+#  form: **ATTR <# description lines>
+#
+**ATTR 237
+#
+#  description lines have the form:
+# <obj nm> <att nm> <in nm> <type> <# values> <rd code> [ <value(s)> ]
+#   with:
+#  <type> can be DFNT_CHAR, DFNT_FLOAT32, DFNT_FLOAT64, DFNT_INT16, DFNT_INT32,
+#         DFNT_INT8, DFNT_UINT8
+#  <rd code> can be NOREAD, READ_NOCK, READ_ONE_VAL, READ_INCLUSIVE
+"gbl" "Product Name" "Product Name" DFNT_CHAR -1 READ_NOCK
+"gbl" "Title" "Title" DFNT_CHAR -1 READ_ONE_VAL "SeaWiFS Level-2 Data"
+"gbl" "Sensor Name" "Sensor Name" DFNT_CHAR -1 READ_ONE_VAL "SeaWiFS"
+"gbl" "Replacement Flag" "Replacement Flag" DFNT_CHAR -1 READ_NOCK
+"gbl" "Software Name" "Software Name" DFNT_CHAR -1 READ_ONE_VAL "MSl12"
+"gbl" "Software Version" "Software Version" DFNT_CHAR -1 READ_NOCK
+"gbl" "Processing Time" "Processing Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "Processing Control" "Processing Control" DFNT_CHAR -1 READ_NOCK
+"gbl" "Input Parameters" "Input Parameters" DFNT_CHAR -1 READ_NOCK
+"gbl" "Input Files" "Input Files" DFNT_CHAR -1 READ_NOCK
+#
+#  SeaWiFS specific section
+"gbl" "Data Center" "Data Center" DFNT_CHAR -1 READ_ONE_VAL "NASA/GSFC SeaWiFS Data Processing Center"
+#"gbl" "Station Name" "Station Name" DFNT_CHAR -1 READ_ONE_VAL "Wallops Flight Facility"
+#"gbl" "Station Latitude" "Station Latitude" DFNT_FLOAT32 1 READ_ONE_VAL 37.9272
+#"gbl" "Station Longitude" "Station Longitude" DFNT_FLOAT32 1 READ_ONE_VAL -75.4753
+"gbl" "Station Name" "Station Name" DFNT_CHAR -1 READ_NOCK
+"gbl" "Station Latitude" "Station Latitude" DFNT_FLOAT32 1 READ_NOCK
+"gbl" "Station Longitude" "Station Longitude" DFNT_FLOAT32 1 READ_NOCK
+#  this is Fred's proposed.  leave as-is for now
+#"gbl" "Mission" "Mission" DFNT_CHAR -1 READ_ONE_VAL "OrbView-2 SeaWiFS"
+"gbl" "Mission" "Mission" DFNT_CHAR -1 READ_ONE_VAL "SeaStar SeaWiFS"
+"gbl" "Mission Characteristics" "Mission Characteristics" DFNT_CHAR -1 READ_ONE_VAL "Nominal orbit: inclination = 98.2 (Sun-synchronous); node = 12 noon local (descending); eccentricity = <0.002; altitude = 705 km; ground speed = 6.75 km/sec"
+"gbl" "Sensor" "Sensor" DFNT_CHAR -1 READ_ONE_VAL "Sea-viewing Wide Field-of-view Sensor (SeaWiFS)"
+"gbl" "Sensor Characteristics" "Sensor Characteristics" DFNT_CHAR -1 READ_ONE_VAL "Number of bands = 8; number of active bands = 8; wavelengths per band (nm) = 412, 443, 490, 510, 555, 670, 765, 865; bits per pixel = 10; instantaneous field-of-view = 1.5835 mrad; pixels per scan = 1285; scan rate = 6/sec; sample rate = 7710/sec"
+"gbl" "Data Type" "Data Type" DFNT_CHAR -1 READ_ONE_VAL "HRPT"
+#
+"gbl" "Start Time" "Start Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "End Time" "End Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "Scene Center Time" "Scene Center Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "Node Crossing Time" "Node Crossing Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "Start Year" "Start Year" DFNT_INT16 1 READ_INCLUSIVE 1994 2050
+"gbl" "Start Day" "Start Day" DFNT_INT16 1 READ_INCLUSIVE 1 366
+"gbl" "Start Millisec" "Start Millisec" DFNT_INT32 1 READ_INCLUSIVE 0 86399999
+"gbl" "End Year" "End Year" DFNT_INT16 1 READ_INCLUSIVE 1994 2050
+"gbl" "End Day" "End Day" DFNT_INT16 1 READ_INCLUSIVE 1 366
+"gbl" "End Millisec" "End Millisec" DFNT_INT32 1 READ_INCLUSIVE 0 86399999
+"gbl" "Start Node" "Start Node" DFNT_CHAR -1 READ_NOCK
+"gbl" "End Node" "End Node" DFNT_CHAR -1 READ_NOCK
+"gbl" "Orbit Number" "Orbit Number" DFNT_INT32 1 READ_NOCK
+#
+"gbl" "Pixels per Scan Line" "Pixels per Scan Line" DFNT_INT32 1 READ_ONE_VAL 1285
+"gbl" "Number of Scan Lines" "Number of Scan Lines" DFNT_INT32 1 READ_INCLUSIVE 1 30000
+"gbl" "Number of Bands" "Number of Bands" DFNT_INT32 1 READ_ONE_VAL 8
+"gbl" "LAC Pixel Start Number" "LAC Pixel Start Number" DFNT_INT32 1 READ_ONE_VAL 1
+"gbl" "LAC Pixel Subsampling" "LAC Pixel Subsampling" DFNT_INT32 1 READ_ONE_VAL 1
+"gbl" "Scene Center Scan Line" "Scene Center Scan Line" DFNT_INT32 1 READ_INCLUSIVE 0 10000
+"gbl" "Number of Scan Control Points" "Number of Scan Control Points" DFNT_INT32 1 READ_NOCK
+"gbl" "Number of Pixel Control Points" "Number of Pixel Control Points" DFNT_INT32 1 READ_NOCK
+"gbl" "Mask Names" "Mask Names" DFNT_CHAR -1 READ_NOCK
+"gbl" "Flag Percentages" "Flag Percentages" DFNT_FLOAT32 32 READ_INCLUSIVE 0.0 100.0
+#
+"gbl" "Latitude Units" "Latitude Units" DFNT_CHAR -1 READ_ONE_VAL "degrees North"
+"gbl" "Longitude Units" "Longitude Units" DFNT_CHAR -1 READ_ONE_VAL "degrees East"
+"gbl" "Scene Center Latitude" "Scene Center Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE  -90.0 90.0
+"gbl" "Scene Center Longitude" "Scene Center Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl"  "Scene Center Solar Zenith"  "Scene Center Solar Zenith"  DFNT_FLOAT32  1  READ_INCLUSIVE  -360.0 360.0
+"gbl" "Upper Left Latitude" "Upper Left Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Upper Left Longitude" "Upper Left Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Upper Right Latitude" "Upper Right Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Upper Right Longitude" "Upper Right Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Lower Left Latitude" "Lower Left Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Lower Left Longitude" "Lower Left Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Lower Right Latitude" "Lower Right Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Lower Right Longitude" "Lower Right Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Northernmost Latitude" "Northernmost Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Southernmost Latitude" "Southernmost Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Westernmost Longitude" "Westernmost Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Easternmost Longitude" "Easternmost Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Start Center Latitude" "Start Center Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "Start Center Longitude" "Start Center Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "End Center Latitude" "End Center Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -90.0 90.0
+"gbl" "End Center Longitude" "End Center Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Orbit Node Longitude" "Orbit Node Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -180.0 180.0
+"gbl" "Earth-Sun Distance Correction" "Earth-Sun Distance Correction" DFNT_FLOAT64 1 READ_NOCK
+#
+# attributes for SDSes
+#
+"year" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan year"
+"year" "valid_range" "valid_range" DFNT_INT32 2 READ_ONE_VAL    1996 2038
+"year" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "years"
+"day" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan day of year"
+"day" "valid_range" "valid_range" DFNT_INT32 2 READ_ONE_VAL  1 366
+"day" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "days"
+"msec" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan-line time, milliseconds of day"
+"msec" "valid_range" "valid_range" DFNT_INT32 2 READ_ONE_VAL 0 86399999
+"msec" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "milliseconds"
+"slat" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan start-pixel latitude"
+"slat" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -90. 90.
+"slat" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"slon" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan start-pixel longitude"
+"slon" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -180. 180.
+"slon" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"clat" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan center-pixel latitude"
+"clat" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -90. 90.
+"clat" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"clon" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan center-pixel longitude"
+"clon" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -180. 180.
+"clon" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"elat" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan end-pixel latitude"
+"elat" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -90. 90.
+"elat" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"elon" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan end-pixel longitude"
+"elon" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -180. 180.
+"elon" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"csol_z"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Scan center-pixel solar zenith angle"
+"csol_z"  "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  0. 180.
+"csol_z" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+#
+"nLw_412" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Normalized water-leaving radiance at 412 nm"
+"nLw_412" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.001
+"nLw_412" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"nLw_412" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"nLw_443" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Normalized water-leaving radiance at 443 nm"
+"nLw_443" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.001
+"nLw_443" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"nLw_443" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"nLw_490" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Normalized water-leaving radiance at 490 nm"
+"nLw_490" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.001
+"nLw_490" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"nLw_490" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"nLw_510" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Normalized water-leaving radiance at 510 nm"
+"nLw_510" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.001
+"nLw_510" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"nLw_510" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"nLw_555" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Normalized water-leaving radiance at 555 nm"
+"nLw_555" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.001
+"nLw_555" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"nLw_555" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"nLw_670" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Normalized water-leaving radiance at 670 nm"
+"nLw_670" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.0001
+"nLw_670" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"nLw_670" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"chlor_a" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Chlorophyll Concentration, OC4 Algorithm"
+"chlor_a" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 1.
+"chlor_a" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"chlor_a" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mg m^-3"
+"K_490" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Diffuse attenuation coefficient at 490 nm (OBPG)"
+"K_490" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.0002
+"K_490" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"K_490" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "m^-1"
+"eps_78" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Epsilon of aerosol correction at 765 and 865 nm"
+"eps_78" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.01
+"eps_78" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"eps_78" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "dimensionless"
+"tau_865" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Aerosol optical thickness at 865 nm"
+"tau_865" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.0001
+"tau_865" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"tau_865" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "dimensionless"
+"angstrom_510" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Angstrom coefficient, 510 to 865 nm"
+"angstrom_510" "slope" "slope" DFNT_FLOAT32 1 READ_ONE_VAL 0.0002
+"angstrom_510" "intercept" "intercept" DFNT_FLOAT32 1 READ_ONE_VAL 0.0
+"angstrom_510" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "dimensionless"
+"l2_flags" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Level-2 Processing Flags"
+"l2_flags" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "dimensionless"
+"l2_flags" "f01_name" "f01_name" DFNT_CHAR -1 READ_ONE_VAL "ATMFAIL"
+"l2_flags" "f02_name" "f02_name" DFNT_CHAR -1 READ_ONE_VAL "LAND"
+"l2_flags" "f03_name" "f03_name" DFNT_CHAR -1 READ_ONE_VAL "BADANC"
+"l2_flags" "f04_name" "f04_name" DFNT_CHAR -1 READ_ONE_VAL "HIGLINT"
+"l2_flags" "f05_name" "f05_name" DFNT_CHAR -1 READ_ONE_VAL "HILT"
+"l2_flags" "f06_name" "f06_name" DFNT_CHAR -1 READ_ONE_VAL "HISATZEN"
+"l2_flags" "f07_name" "f07_name" DFNT_CHAR -1 READ_ONE_VAL "COASTZ"
+"l2_flags" "f08_name" "f08_name" DFNT_CHAR -1 READ_ONE_VAL "NEGLW"
+"l2_flags" "f09_name" "f09_name" DFNT_CHAR -1 READ_ONE_VAL "STRAYLIGHT"
+"l2_flags" "f10_name" "f10_name" DFNT_CHAR -1 READ_ONE_VAL "CLDICE"
+"l2_flags" "f11_name" "f11_name" DFNT_CHAR -1 READ_ONE_VAL "COCCOLITH"
+"l2_flags" "f12_name" "f12_name" DFNT_CHAR -1 READ_ONE_VAL "TURBIDW"
+"l2_flags" "f13_name" "f13_name" DFNT_CHAR -1 READ_ONE_VAL "HISOLZEN"
+"l2_flags" "f14_name" "f14_name" DFNT_CHAR -1 READ_ONE_VAL "HITAU"
+"l2_flags" "f15_name" "f15_name" DFNT_CHAR -1 READ_ONE_VAL "LOWLW"
+"l2_flags" "f16_name" "f16_name" DFNT_CHAR -1 READ_ONE_VAL "CHLFAIL"
+"l2_flags" "f17_name" "f17_name" DFNT_CHAR -1 READ_ONE_VAL "NAVWARN"
+"l2_flags" "f18_name" "f18_name" DFNT_CHAR -1 READ_ONE_VAL "ABSAER"
+"l2_flags" "f19_name" "f19_name" DFNT_CHAR -1 READ_ONE_VAL "TRICHO"
+"l2_flags" "f20_name" "f20_name" DFNT_CHAR -1 READ_ONE_VAL "MAXAERITER"
+"l2_flags" "f21_name" "f21_name" DFNT_CHAR -1 READ_ONE_VAL "MODGLINT"
+"l2_flags" "f22_name" "f22_name" DFNT_CHAR -1 READ_ONE_VAL "CHLWARN"
+"l2_flags" "f23_name" "f23_name" DFNT_CHAR -1 READ_ONE_VAL "ATMWARN"
+"l2_flags" "f24_name" "f24_name" DFNT_CHAR -1 READ_ONE_VAL "DARKPIXEL"
+"l2_flags" "f25_name" "f25_name" DFNT_CHAR -1 READ_ONE_VAL "SEAICE"
+"l2_flags" "f26_name" "f26_name" DFNT_CHAR -1 READ_ONE_VAL "NAVFAIL"
+"l2_flags" "f27_name" "f27_name" DFNT_CHAR -1 READ_ONE_VAL "FILTER"
+"l2_flags" "f28_name" "f28_name" DFNT_CHAR -1 READ_ONE_VAL "SSTWARN"
+"l2_flags" "f29_name" "f29_name" DFNT_CHAR -1 READ_ONE_VAL "SSTFAIL"
+"l2_flags" "f30_name" "f30_name" DFNT_CHAR -1 READ_ONE_VAL "HIPOL"
+"l2_flags" "f31_name" "f31_name" DFNT_CHAR -1 READ_ONE_VAL "SPARE"
+"l2_flags" "f32_name" "f32_name" DFNT_CHAR -1 READ_ONE_VAL "OCEAN"
+#
+"cntl_pt_cols" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Pixel control points"
+"cntl_pt_cols" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "none"
+"cntl_pt_rows" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Scan control points"
+"cntl_pt_rows" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "none"
+"longitude" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Longitudes at control points"
+"longitude" "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  -180. 180.
+"longitude" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"latitude" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Latitudes at control points"
+"latitude" "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  -90.  90.
+"latitude" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+"tilt" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Tilt angle for scan line"
+"tilt" "valid_range" "valid_range" DFNT_FLOAT32 2 READ_ONE_VAL -20.1 20.1
+"tilt" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "degrees"
+#
+"orb_vec"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Orbit position vector at scan line time"
+"orb_vec"  "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  -7200. 7200.
+"orb_vec"  "units"  "units"  DFNT_CHAR  -1  READ_ONE_VAL  "kilometers"
+"sun_ref"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Reference Sun vector in ECEF frame"
+"sun_ref"  "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  -1. 1.
+"att_ang"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Computed yaw, roll, pitch"
+"att_ang"  "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  -180. 180.
+"sen_mat"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "ECEF-to-sensor-frame matrix"
+"sen_mat"  "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  -1. 1.
+"scan_ell"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Scan-track ellipse coefficients"
+"nflag"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Navigation flags"
+#
+"ntilts"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Number of scene tilt states"
+"tilt_flags"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Tilt indicators"
+"tilt_flags"  "valid_range"  "valid_range"  DFNT_INT16  2  READ_ONE_VAL  -1 3
+"tilt_ranges"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Scan-line number ranges of scene tilt states"
+#
+"wavelength" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Wavelengths"
+"wavelength" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "nm"
+"vcal_gain" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Vicarious Calibration Gain"
+"vcal_gain" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "dimensionless"
+"vcal_offset" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Vicarious Calibration Offset
+"vcal_offset" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"F0" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Mean Solar Flux"
+"F0" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "mW cm^-2 um^-1 sr^-1"
+"k_oz" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Ozone Absorption Coefficient"
+"k_oz" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "cm^-1"
+"Tau_r" "long_name" "long_name" DFNT_CHAR -1 READ_ONE_VAL "Rayleigh Optical Thickness"
+"Tau_r" "units" "units" DFNT_CHAR -1 READ_ONE_VAL "dimensionless"
+#
+"entry_year"  "long_name"  "long_name"  DFNT_CHAR  -1 READ_ONE_VAL  "Calibration entry year"
+"entry_day"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Calibration entry day-of-year"
+"ref_year"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Calibration reference year"
+"ref_day"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Calibration reference day-of-year"
+"ref_minute"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Calibration reference minute-of-day"
+"ms1_const"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side1 constant correction factors"
+"ms2_const"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side2 constant correction factors"
+"ms1_linear_1"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side1 linear correction factors"
+"ms2_linear_1"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side2 linear correction factors"
+"ms1_linear_2"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side1 linear correction factors"
+"ms2_linear_2"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side2 linear correction factors"
+"ms1_exponential_1"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side1 exponential correction factors"
+"ms2_exponential_1"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side2 exponential correction factors"
+"ms1_exponential_2"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side1 exponential correction factors"
+"ms2_exponential_2"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Mirror-side2 exponential correction factors"
+"t_const"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Time-dependent correction constant terms"
+"t_linear_1"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Time-dependent correction linear coefficients"
+"t_exponential_1"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Time-dependent correction exponential coefficients"
+"t_linear_2"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Time-dependent correction linear coefficients"
+"t_exponential_2"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Time-dependent correction exponential coefficients"
+"cal_offs"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Calibration system offsets"
+"counts"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Digital counts of calibration knees"
+"counts"  "valid_range"  "valid_range"  DFNT_FLOAT32  2  READ_ONE_VAL  0. 1023.
+"rads"  "long_name"  "long_name"  DFNT_CHAR  -1  READ_ONE_VAL "Radiances of calibration knees"
+#
+#
+#  Array Dimension Section
+#  form: **ARR_DIM <# array dim definitions>
+#
+**ARR_DIM 5
+#
+#  definition lines for dimensions to save, etc
+#  <name in gbl attribs> <short name>
+"Pixels per Scan Line"  npix
+"Number of Scan Lines"  nlin
+"Number of Scan Control Points" nctl_lin
+"Number of Pixel Control Points" nctl_pix
+"Number of Bands" nbands
+#
+#  Science Dataset Section
+#  form: **SDS <# SDS descriptions>
+#
+**SDS 65
+#
+#  descriptions have the form:
+# <name>  <type>  <# attr> <rank>   <dim 1 key> <size>  [<dim 2 key> <size> [<dim 3 key> <size> ] ]  <chk mn mx?>  [ <mn> <mx> ]
+#  <type> is same data type as in attrib description
+#  <dim X key>  can be: DSIZE_NOCK, DSIZE_CK, DSIZE_DIM_NM
+#  <chk mn mx?>  can be: NO_MN_MX, MN_MX_CK
+#  
+# <name>  <type>  <# attr> <rank>   <dim 1 key> <size>  [<dim 2 key> <size> [<dim 3 key> <size> ] ]  <chk mn mx?>  [ <mn> <mx> ]
+"year" DFNT_INT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK 1996 2038
+"day" DFNT_INT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK 0 366
+"msec" DFNT_INT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK 0  86399999
+"slat" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK -90.0 90.0
+"slon" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK -180.0  180.0
+"clat" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK -90.0 90.0
+"clon" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK -180.0  180.0
+"elat" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK -90.0 90.0
+"elon" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK -180.0  180.0
+"csol_z" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK 0.0  180.0
+#
+"nLw_412"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"nLw_443"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"nLw_490"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"nLw_510"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"nLw_555"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"nLw_670"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"chlor_a"  DFNT_FLOAT32 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"K_490"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"eps_78"  DFNT_UINT8 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"tau_865"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"angstrom_510"  DFNT_INT16 4 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+"l2_flags"  DFNT_INT32 34 2 DSIZE_DIM_NM nlin DSIZE_DIM_NM npix NO_MN_MX
+#
+"cntl_pt_cols" DFNT_INT32 2 1 DSIZE_DIM_NM nctl_pix MN_MX_CK 0 1286
+"cntl_pt_rows" DFNT_INT32 2 1 DSIZE_DIM_NM nctl_lin MN_MX_CK 0 10000
+"longitude" DFNT_FLOAT32 3 2 DSIZE_DIM_NM nctl_lin DSIZE_DIM_NM nctl_pix MN_MX_CK -180. 180.
+"latitude" DFNT_FLOAT32 3 2 DSIZE_DIM_NM nctl_lin DSIZE_DIM_NM nctl_pix MN_MX_CK -90. 90.
+"tilt" DFNT_FLOAT32 3 1 DSIZE_DIM_NM nlin MN_MX_CK  -20.5 20.5
+#
+"orb_vec" DFNT_FLOAT32 3 2 DSIZE_DIM_NM nlin DSIZE_CK 3 MN_MX_CK -7200.0 7200.0
+#"l_vert"      DFNT_FLOAT32   2     2    DSIZE_DIM_NM  nlin    DSIZE_CK     3    MN_MX_CK    -1.0 1.0
+"sun_ref"     DFNT_FLOAT32   2     2    DSIZE_DIM_NM  nlin    DSIZE_CK     3    MN_MX_CK    -1.0 1.0
+"att_ang"     DFNT_FLOAT32   2     2    DSIZE_DIM_NM  nlin    DSIZE_CK     3    MN_MX_CK    -180.0 180.0
+"sen_mat"     DFNT_FLOAT32   2     3    DSIZE_DIM_NM  nlin    DSIZE_CK     3    DSIZE_CK  3     MN_MX_CK    -1.0 1.0
+"scan_ell"    DFNT_FLOAT32   1     2    DSIZE_DIM_NM  nlin    DSIZE_CK     6    NO_MN_MX
+"nflag"       DFNT_INT32     1     2    DSIZE_DIM_NM  nlin    DSIZE_CK     8    NO_MN_MX
+#
+"ntilts"      DFNT_INT32     1     1    DSIZE_CK      1                         NO_MN_MX
+"tilt_flags"  DFNT_INT16     2     1    DSIZE_CK      20                        MN_MX_CK    -1 3
+"tilt_ranges" DFNT_INT16     1     2    DSIZE_CK      20      DSIZE_CK     2    NO_MN_MX
+#
+"wavelength" DFNT_INT32 2 1 DSIZE_DIM_NM nbands MN_MX_CK 412 865
+"vcal_gain" DFNT_FLOAT32 2 1 DSIZE_DIM_NM nbands NO_MN_MX
+"vcal_offset" DFNT_FLOAT32 2 1 DSIZE_DIM_NM nbands NO_MN_MX
+"F0" DFNT_FLOAT32 2 1 DSIZE_DIM_NM nbands NO_MN_MX
+"k_oz" DFNT_FLOAT32 2 1 DSIZE_DIM_NM nbands NO_MN_MX
+"Tau_r" DFNT_FLOAT32 2 1 DSIZE_DIM_NM nbands NO_MN_MX
+#
+"entry_year" DFNT_INT16 1 1 DSIZE_CK 1 MN_MX_CK 1994 2050
+"entry_day" DFNT_INT16 1 1 DSIZE_CK 1 MN_MX_CK 1 366
+"ref_year" DFNT_INT16 1 1 DSIZE_CK 1 MN_MX_CK 1997 1998
+"ref_day" DFNT_INT16 1 1 DSIZE_CK 1 MN_MX_CK 1 366
+"ref_minute" DFNT_INT16 1 1 DSIZE_CK 1 MN_MX_CK 10 1440
+"ms1_const" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms2_const" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms1_linear_1" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms2_linear_1" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms1_exponential_1" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms2_exponential_1" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms1_linear_2" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms2_linear_2" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms1_exponential_2" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"ms2_exponential_2" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"t_const" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"t_linear_1" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"t_exponential_1" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"t_linear_2" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"t_exponential_2" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"cal_offs" DFNT_FLOAT64 1 1 DSIZE_CK 8 NO_MN_MX
+"counts" DFNT_FLOAT32 2 3 DSIZE_CK 8 DSIZE_CK 4 DSIZE_CK 5 MN_MX_CK 0 1023
+"rads"  DFNT_FLOAT32 1 3 DSIZE_CK 8 DSIZE_CK 4 DSIZE_CK 5 NO_MN_MX
+#
+#  Raster Section
+#  form: **RASTER <# raster images>
+#
+**RASTER 0
+#
+#  raster definition lines have the form:
+#  <ras img lbl> <palette lbl> <npix name> <nlin name>
+#
+#(enter description lines here)
+#
+#  Vgroup Section
+#  form:  **VGROUP <# of products>
+#
+**VGROUP 0
+#
+#  1st description has:
+#  <# bins short name> <resolve value>
+#(enter first description line here)
+#
+#  product descriptions have the form:
+#  <product name>
+#(enter description lines here)

@@ -1,0 +1,6 @@
+resolution=1km
+interp=area
+fudge=3
+oformat=png
+use_rgb=1
+product_rgb=rhos_670,rhos_555,rhos_412

@@ -1,0 +1,7 @@
+#
+# MSL12 extraction and mapping Suite parameters for SeaWiFS
+# 
+
+l2prod=aot_865 angstrom Rrs_vvv nLw_vvv chlor_a Kd_490 pic poc cdom_index par
+
+
