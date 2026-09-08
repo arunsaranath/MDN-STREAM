@@ -1,0 +1,8 @@
+#
+# l1brsgen default parameters for SeaWiFS
+# 
+rgb=670,555,412
+atmocor=0
+stype=0
+datamin=0.01
+datamax=0.9

@@ -1,0 +1,141 @@
+# seawifs_l3_smi.fmt - format table for SeaWiFS L3 Standard Mapped (SMI) data
+#
+# Using the new fmt_check table format of March, 2005
+#  (see ww:~/txt/QCinfo/fmt_check_tbl_25mar05.txt or
+#  http://oceancolor.gsfc.nasa.gov/staff/wayne/fmt_check_tbl.html )
+#
+#  W. Robinson, SAIC, 19 May 05 up the data bins to 2 x 10^8
+#    and make the # pix, lines variable (4, 9, new 9 km bin size)
+#
+#  Attribute Section
+#  form: **ATTR <# description lines>
+#
+**ATTR 62
+#
+#  description lines have the form:
+# <obj nm> <att nm> <in nm> <type> <# values> <rd code> [ <value(s)> ]
+#   with:
+#  <type> can be DFNT_CHAR, DFNT_FLOAT32, DFNT_FLOAT64, DFNT_INT16, DFNT_INT32,
+#         DFNT_INT8, DFNT_UINT8
+#  <rd code> can be NOREAD, READ_NOCK, READ_ONE_VAL, READ_INCLUSIVE
+#
+"gbl" "Product Name" "Product Name" DFNT_CHAR -1 READ_NOCK " "
+"gbl" "Title" "Title" DFNT_CHAR -1 READ_ONE_VAL "SeaWiFS Level-3 Standard Mapped Image"
+"gbl" "Sensor Name" "Sensor Name" DFNT_CHAR -1 READ_ONE_VAL "SeaWiFS"
+"gbl" "Product Type" "Product Type" DFNT_CHAR -1 READ_NOCK
+"gbl" "Processing Version" "Processing Version" DFNT_CHAR -1 READ_NOCK
+"gbl" "Software Name" "Software Name"  DFNT_CHAR -1 READ_NOCK
+"gbl" "Software Version" "Software Version"  DFNT_CHAR -1 READ_NOCK
+"gbl" "Processing Time" "Processing Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "Processing Control" "Processing Control" DFNT_CHAR -1 READ_NOCK
+"gbl" "Input Parameters" "Input Parameters" DFNT_CHAR -1 READ_NOCK
+"gbl" "Input Files" "Input Files" DFNT_CHAR -1 READ_NOCK
+"gbl" "L2 Flag Names" "L2 Flag Names" DFNT_CHAR -1 READ_NOCK
+# SeaWiFS specific
+"gbl" "Data Center" "Data Center" DFNT_CHAR -1 READ_ONE_VAL "NASA/GSFC SeaWiFS Data Processing Center"
+"gbl" "Station Name" "Station Name" DFNT_CHAR -1 READ_ONE_VAL "GSFC HRPT, NASA, MD"
+"gbl" "Station Latitude" "Station Latitude" DFNT_FLOAT32 1 READ_ONE_VAL 38.9958
+"gbl" "Station Longitude" "Station Longitude" DFNT_FLOAT32 1 READ_ONE_VAL -76.851097
+"gbl" "Mission" "Mission" DFNT_CHAR -1 READ_ONE_VAL "SeaStar SeaWiFS"
+"gbl" "Mission Characteristics" "Mission Characteristics" DFNT_CHAR -1 READ_ONE_VAL "Nominal orbit: inclination = 98.2 (Sun-synchronous); node = 12 noon local (descending); eccentricity = <0.002; altitude = 705 km; ground speed = 6.75 km/sec"
+"gbl" "Sensor" "Sensor" DFNT_CHAR -1 READ_ONE_VAL "Sea-viewing Wide Field-of-view Sensor (SeaWiFS)"
+"gbl" "Sensor Characteristics" "Sensor Characteristics" DFNT_CHAR -1 READ_ONE_VAL "Number of bands = 8; number of active bands = 8; wavelengths per band (nm) = 412, 443, 490, 510, 555, 670, 765, 865; bits per pixel = 10; instantaneous field-of-view = 1.5835 mrad; pixels per scan = 1285; scan rate = 6/sec; sample rate = 7710/sec"
+#
+#"gbl" "Period Start Year" "Period Start Year" DFNT_INT16 1 READ_INCLUSIVE 1994 2050
+#"gbl" "Period Start Day" "Period Start Day" DFNT_INT16 1 READ_INCLUSIVE 1 366
+#"gbl" "Period End Year" "Period End Year" DFNT_INT16 1 READ_INCLUSIVE 1994 2050
+#"gbl" "Period End Day" "Period End Day" DFNT_INT16 1 READ_INCLUSIVE 1 366
+"gbl" "Period Start Year" "Period Start Year" DFNT_INT16 1 READ_NOCK
+"gbl" "Period Start Day" "Period Start Day" DFNT_INT16 1 READ_NOCK
+"gbl" "Period End Year" "Period End Year" DFNT_INT16 1 READ_NOCK
+"gbl" "Period End Day" "Period End Day" DFNT_INT16 1 READ_NOCK
+"gbl" "Start Time" "Start Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "End Time" "End Time" DFNT_CHAR -1 READ_NOCK
+"gbl" "Start Year" "Start Year" DFNT_INT16 1 READ_INCLUSIVE 1994 2050
+"gbl" "Start Day" "Start Day" DFNT_INT16 1 READ_INCLUSIVE 1 366
+"gbl" "Start Millisec" "Start Millisec" DFNT_INT32 1 READ_INCLUSIVE 0 86399999
+"gbl" "End Year" "End Year" DFNT_INT16 1 READ_INCLUSIVE 1994 2050
+"gbl" "End Day" "End Day" DFNT_INT16 1 READ_INCLUSIVE 1 366
+"gbl" "End Millisec" "End Millisec" DFNT_INT32 1 READ_INCLUSIVE 0 86399999
+"gbl" "Orbit" "Orbit" DFNT_INT32 1 READ_NOCK
+"gbl" "Start Orbit" "Start Orbit" DFNT_INT32 1 READ_NOCK
+"gbl" "End Orbit" "End Orbit" DFNT_INT32 1 READ_NOCK
+#
+"gbl" "Map Projection" "Map Projection" DFNT_CHAR -1   READ_ONE_VAL   "Equidistant Cylindrical"
+"gbl" "Latitude Units" "Latitude Units" DFNT_CHAR -1 READ_ONE_VAL "degrees North"
+"gbl" "Longitude Units" "Longitude Units" DFNT_CHAR -1 READ_ONE_VAL "degrees East"
+"gbl" "Northernmost Latitude" "Northernmost Latitude" DFNT_FLOAT32 1 READ_ONE_VAL 90.0
+"gbl" "Southernmost Latitude" "Southernmost Latitude" DFNT_FLOAT32 1 READ_ONE_VAL -90.0
+"gbl" "Westernmost Longitude" "Westernmost Longitude" DFNT_FLOAT32 1 READ_ONE_VAL -180.0
+"gbl" "Easternmost Longitude" "Easternmost Longitude" DFNT_FLOAT32 1 READ_ONE_VAL 180.0
+"gbl" "Latitude Step" "Latitude Step" DFNT_FLOAT32 1 READ_NOCK 0.087890624
+"gbl" "Longitude Step" "Longitude Step" DFNT_FLOAT32 1 READ_NOCK 0.087890624
+"gbl" "SW Point Latitude" "SW Point Latitude" DFNT_FLOAT32 1 READ_INCLUSIVE -89.9584 -89.9582
+"gbl" "SW Point Longitude" "SW Point Longitude" DFNT_FLOAT32 1 READ_INCLUSIVE -179.9584 -179.9582
+#
+"gbl" "Data Bins" "Data Bins" DFNT_INT32 1 READ_INCLUSIVE 1 800000000
+"gbl" "Number of Lines" "Number of Lines" DFNT_INT32 1 READ_INCLUSIVE 100 20000
+"gbl" "Number of Columns" "Number of Columns" DFNT_INT32 1 READ_INCLUSIVE 200 40000
+"gbl" "Parameter" "Parameter" DFNT_CHAR -1 READ_NOCK
+"gbl" "Measure" "Measure" DFNT_CHAR -1 READ_ONE_VAL "Mean"
+"gbl" "Units" "Units" DFNT_CHAR -1 READ_NOCK
+"gbl" "Scaling" "Scaling" DFNT_CHAR -1 READ_NOCK
+"gbl" "Scaling Equation" "Scaling Equation" DFNT_CHAR -1 READ_NOCK
+"gbl" "Slope" "Slope" DFNT_FLOAT32 1 READ_NOCK
+"gbl" "Intercept" "Intercept" DFNT_FLOAT32 1 READ_NOCK
+"gbl" "Data Minimum" "Data Minimum" DFNT_FLOAT32 1 READ_NOCK
+"gbl" "Data Maximum" "Data Maximum" DFNT_FLOAT32 1 READ_NOCK
+"gbl" "Suggested Image Scaling Minimum" "Suggested Image Scaling Minimum" DFNT_FLOAT32 1 READ_INCLUSIVE 0.0099 0.0101
+"gbl" "Suggested Image Scaling Maximum" "Suggested Image Scaling Maximum" DFNT_FLOAT32 1 READ_INCLUSIVE 19.999 20.001
+"gbl" "Suggested Image Scaling Type" "Suggested Image Scaling Type" DFNT_CHAR -1 READ_NOCK
+"gbl" "Suggested Image Scaling Applied" "Suggested Image Scaling Applied" DFNT_CHAR -1 READ_ONE_VAL "No"
+#  sds attributes don't check for general case
+#
+#  Array Dimension Section
+#  form: **ARR_DIM <# array dim definitions>
+#
+**ARR_DIM 2
+#
+#  definition lines for dimensions to save, etc
+#  <name in gbl attribs> <short name>
+#
+"Number of Lines" nlin
+"Number of Columns" npix
+#
+#  Science Dataset Section
+#  form: **SDS <# SDS descriptions>
+#
+**SDS 0
+#
+#  descriptions have the form:
+# <name>  <type>  <# attr> <rank>   <dim 1 key> <size>  [<dim 2 key> <size> [<dim 3 key> <size> ] ]  <chk mn mx?>  [ <mn> <mx> ]
+#  <type> is same data type as in attrib description
+#  <dim X key>  can be: DSIZE_NOCK, DSIZE_CK, DSIZE_DIM_NM
+#  <chk mn mx?>  can be: NO_MN_MX, NM_MX_CK
+#  
+#  for reprocessing 09, we can't have 
+#
+#  Raster Section
+#  form: **RASTER <# raster images>
+#
+**RASTER 0
+#
+#  raster definition lines have the form:
+#  <ras img lbl> <palette lbl> <npix name> <nlin name>
+#
+#(enter description lines here)
+#
+#  Vgroup Section
+#  form:  **VGROUP <# of products>
+#
+**VGROUP 0
+#
+#  1st description has:
+#  <# bins short name> <resolve value>
+#
+#(enter first description line here)
+#
+#  product descriptions have the form:
+#  <product name>
+#
+#(enter description lines here)

@@ -33,7 +33,7 @@ min_in_out_val = 1e-6
 
 # If new default model is defined for a sensor this Dictionary needs to be updated.
 DEFAULT_SENSOR_PRODUCT_COMBINATIONS = {
-    "OLCI": 'chl,tss,cdom,pc',
+    "OLCI": 'chl,tss,cdom',
     "PACE-delivery": 'aph,chl,tss,pc,ad,ag,cdom',
     "SD8-cc_base": 'chl,secchi',
 }
@@ -88,7 +88,7 @@ def get_default_pipeline_kwargs(sensor, product):
                 'silent': True,
                 'model_uid': "39863a30bd3ea0c25f24a212564810cfc341ca66b6c10c8b464befac7fbf6a8f"
             }
-        elif product=="chl,tss,cdom":
+        elif is_subset_product(product, "chl,tss,cdom"):
             kwargs = {
                 'product': max_model_products,
                 'sat_bands': False,
@@ -97,15 +97,15 @@ def get_default_pipeline_kwargs(sensor, product):
                 'silent': True,
                 'model_uid': "73bf3ca36f95d13a38032a36f7565a992fa772af0833ad2f74b710b6df33eba2"
             }
-        elif is_subset_product(product, max_model_products):
-            kwargs = {
-                'product': max_model_products,
-                'sat_bands': False,
-                'model_loc': "Weights",
-                'sensor': 'S3A',
-                'silent': True,
-                'model_uid': "5a77d134c57e23dccf34fde5c1d19bffb278def934e2e51c2cbffa4bdac6e363"
-            }
+            """elif is_subset_product(product, max_model_products):
+                kwargs = {
+                    'product': max_model_products,
+                    'sat_bands': False,
+                    'model_loc': "Weights",
+                    'sensor': 'S3A',
+                    'silent': True,
+                    'model_uid': "5a77d134c57e23dccf34fde5c1d19bffb278def934e2e51c2cbffa4bdac6e363"
+                }"""
         else:
             raise ValueError(
                 f"No model found that supports {product} for the {sensor} sensor. "
@@ -737,13 +737,13 @@ def map_cube_mdn(
             if sp_prod == "aph":
                 aph_wvl = np.asarray(get_sensor_bands((sensor.split("-")[0] + '-aph')))
             else:
-                adag_wvl= np.asarray(get_sensor_bands((sensor.split("-")[0] + '-aph')))
+                adag_wvl= np.asarray(get_sensor_bands((sensor.split("-")[0] + '-adag')))
                 break                          # need to check only one of ad or ag
 
 
     # ADD METADATA ATTRIBUTES HERE
     final_ds.attrs.update({
-        "title": "MDN Satellite Product Predictions",
+        "title": "MDN Satellite Rrs Predictions",
         "sensor": sensor,
         "target_products": products,
         "operation_mode": op_mode,

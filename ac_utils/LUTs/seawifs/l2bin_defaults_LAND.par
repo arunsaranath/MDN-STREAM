@@ -1,0 +1,6 @@
+flaguse=~LAND,HISATZEN,HISOLZEN,NAVWARN,NAVFAIL,FILTER
+resolve=4
+rowgroup=270
+composite_prod=ndvi
+composite_scheme=max
+l3bprod=ndvi

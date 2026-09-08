@@ -1,0 +1,8 @@
+#
+# l1mapgen default parameters for OLI
+# 
+rgb=655,561,442
+atmocor=0
+stype=0
+datamin=0.01
+datamax=0.9

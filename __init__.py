@@ -20,3 +20,9 @@ from .plot_utilities import create_scatterplots_trueVsPred, display_sat_rgb, fin
 from .metrics import performance, mdsa, sspb, slope, rmsle
 from .benchmarks.chl.OC.model import OC as OC
 from .user_utilities import get_spectral_preds, get_spectral_preds_raw,  map_cube_mdn
+from .user_utilities_ac import acmap_cube_mdn
+from .ac_utils.process_manager import download_retrieve_ancillary, determine_sensor, extract_date_hour, process_image_dataset
+from .ac_utils.load_rayleigh_data import load_landsat, load_sentinel
+from .ac_utils.angle_manager import main as angles_manager
+from .ac_utils.rayleigh_engine import rayleigh_main
+

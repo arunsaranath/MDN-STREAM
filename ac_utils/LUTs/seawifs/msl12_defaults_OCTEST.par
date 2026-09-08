@@ -1,0 +1,7 @@
+#
+# MSL12 OCTEST Suite parameters for SeaWiFS
+# 
+
+l2prod=aot_865 angstrom Rrs_vvv chlor_a chl_oc3 Kd_490 pic poc cdom_index par epsilon solz senz
+
+

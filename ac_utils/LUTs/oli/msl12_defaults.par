@@ -1,0 +1,71 @@
+#
+# MSL12 default parameters for OLI/L8
+# 
+
+# default output content
+# ----------------------
+suite=OC
+
+# lon/lat subsampling
+# -------------------
+
+# calibration
+# -----------
+calfile=
+# gain=[1.01836,1.04053,1.00758,1.01433,1.00,0.94646,1.00] # 865/2201
+gain=[1.0111,1.0101,1.0070,1.0098,1.00,1.00,1.00]
+offset=[0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+
+# process control
+# ---------------
+
+# atmospheric correction and normalization
+# ----------------------------------------
+aermodfile=$OCDATAROOT/oli/aerosol/aerosol_oli
+aer_opt=-2
+aer_wave_short=865
+aer_wave_long=1609
+mumm_alpha=1.945
+mumm_gamma=1.00
+mumm_epsilon=1.00
+filter_file=$OCDATAROOT/oli/msl12_filter.dat
+
+# algorithm controls
+# ------------------
+chloc2_wave=[482,561]
+chloc2_coef=[0.1977,-1.8117,1.9743,-2.5635,-0.7218]
+chloc3_wave=[443,482,561]
+chloc3_coef=[0.2412,-2.0546,1.1776,-0.5538,-0.4570]
+chloc4_wave=
+chloc4_coef=
+kd2_wave=[482,561]
+kd2_coef=[0.0166,-0.9054,-1.5245,2.2392,-2.4777,-1.1099]
+coccolith=[1.1,0.9, 0.75, 1.85, 1.0, 1.65, 0.6, 1.15]
+qaa_wave=[412,443,482,561,655]
+giop_wave=[412,443,482,561,655]
+avw_coef=[2.4247497295E+05,-2.4338649740E+03,9.7261770284E+00,-1.9333567648E-02,1.9136260794E-05,-7.5487886903E-09]
+
+# flag thresholds
+# ---------------
+cloud_wave=2201
+cloud_thresh=0.018
+epsmin=0.0
+epsmax=3.0
+
+# ancillary met/ozone over-rides (-1000 = ignore)
+# ----------------------------------------------
+
+# masking
+# -------
+
+# line and pixel sampling
+# -----------------------
+
+# ancillary input
+# ---------------
+
+# processing mode (0 = standard processing)
+# -----------------------------------------
+
+# sensor-specific parameters
+# --------------------------

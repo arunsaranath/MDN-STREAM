@@ -1,0 +1,62 @@
+! $Header$
+! $Log$
+!
+!  data file: navqc.dat
+!
+!  Purpose: this is a file containing all the navigfation
+!  	    quality control parameters
+!
+!  By: W. Robinson, GSC, 18 Mar 93
+!
+!       
+!	  sun sensor qa values
+!
+! low, high angle 1 tolerences in degrees (set to minimize use of Sun Sensor C)
+-0.75 
+0.75
+! low, high angle 2 tolerences in degrees
+-1.7
+1.7
+! max angle 1 and 2 change per scan line in deg
+0.005     
+0.005
+!
+!	  earth sensor qa values
+!
+! low, high width tolerences in degrees
+110.0      
+130.0
+! low, high phase tolerences in degrees
+-140.0     
+-120.0
+! max width and phase change per line
+0.06   
+0.015    
+!
+!	  magnetometer sensor qa values (future)
+!
+!
+!
+!	  time tag qa values
+!
+! min, max year and min, max second change per scan line
+1992   
+2100  
+0.16
+0.17
+!
+!	  spacecraft provided attitude qa
+!
+! min and max tolerences for yaw, roll, pitch
+-5.0              ! min yaw
+ 5.0              ! max yaw
+-5.0              ! min roll
+ 5.0              ! max roll
+-5.              ! min pitch
+ 5.              ! max pitch
+! max change in attitude per scan line
+0.1
+0.1
+0.1
+!
+!	and end

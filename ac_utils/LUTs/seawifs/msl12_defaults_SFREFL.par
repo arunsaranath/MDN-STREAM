@@ -1,0 +1,5 @@
+#
+# default parameters for SeaWiFS surface reflectance for TC map processing
+# 
+l2prod=rhos_670,rhos_555,rhos_412
+atmocor=0
