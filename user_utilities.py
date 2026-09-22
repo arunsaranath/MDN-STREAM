@@ -36,6 +36,7 @@ DEFAULT_SENSOR_PRODUCT_COMBINATIONS = {
     "OLCI": 'chl,tss,cdom',
     "PACE-delivery": 'aph,chl,tss,pc,ad,ag,cdom',
     "SD8-cc_base": 'chl,secchi',
+    "HICO": "chl"
 }
 PRODUCT_PATTERN=  r'^[^\s,]+(,[^\s,]+)+$'
 

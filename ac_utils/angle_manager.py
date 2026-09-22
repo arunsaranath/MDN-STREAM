@@ -14,6 +14,7 @@ import rasterio
 from rasterio.transform import Affine
 import xml.etree.ElementTree as ET
 import xmltodict
+import gc
 
 from .driver_S2_SAFE import sentinel2_driver
 
@@ -37,7 +38,7 @@ MSI_WAVELENGTHS: dict[str, str] = {
 }
 
 
-def main(scene_id: str, input_dir: str | Path = 'data/') -> None:
+def angles_manager(scene_id: str, input_dir: str | Path = 'data/', fixed_resolution: int = 30) -> None:
     """Main execution pipeline for Sentinel-2 angle extraction and output writing.
 
     Args:
@@ -89,7 +90,7 @@ def main(scene_id: str, input_dir: str | Path = 'data/') -> None:
 
     else:
         # Dynamic driver import for legacy SAFE handling
-        l1c = sentinel2_driver(str(safe_path))
+        l1c = sentinel2_driver(str(safe_path), resolution=fixed_resolution)             # Changed to accomodoate use of different resolution
         l1c.load_product()
 
         viewing_azimuth_image = l1c.prod.vaa.values
@@ -166,8 +167,33 @@ def write_geotiff(
         'nodata': np.nan,
     }
 
-    with rasterio.open(str(filename), 'w', **profile) as dst:
-        dst.write(data.astype(np.float32), 1)
+    filepath = Path(filename).resolve()
+
+    # 1. Format as Windows extended long path (\\?\) for both Python OS and rasterio
+    str_path = str(filepath)
+    if not str_path.startswith('\\\\?\\'):
+        str_path = f'\\\\?\\{str_path}'
+
+    long_path_obj = Path(str_path)
+
+    # 2. Force-release open GDAL/Rasterio file handles if the file exists
+    if long_path_obj.exists():
+        # Force garbage collection to release any unclosed C++ GDAL file pointers
+        gc.collect()
+
+        # Retry loop to allow Windows file lock to release
+        for attempt in range(5):
+            try:
+                long_path_obj.unlink(missing_ok=True)
+                break
+            except PermissionError:
+                time.sleep(0.2)
+                gc.collect()
+
+    # Write the file as normal
+    with rasterio.Env(GDAL_PAM_ENABLED='NO'):
+        with rasterio.open(str_path, 'w', **profile) as dst:
+            dst.write(data.astype(np.float32), 1)
 
 
 def resize_array(var_array: np.ndarray, height: int, width: int) -> np.ndarray:
@@ -303,4 +329,4 @@ if __name__ == '__main__':
     args = sys.argv[1:]
     if args:
         scene_id_arg = args[0]
-        main(scene_id_arg)
+        angles_manager(**args)

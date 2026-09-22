@@ -435,16 +435,17 @@ def process_image_dataset(ds: xr.Dataset) -> xr.Dataset:
     sensor = ds.attrs.get("sensor")
 
     # 1. Process Geometry Angles
-    if sensor == "OLI":
-        angle_vars = [ "viewing_azimuth", "viewing_zenith", "solar_azimuth", "solar_zenith", ]
-        for var in angle_vars:
-            if var in ds.data_vars:
-                # Convert raw Landsat integer angles (scaled by 100) to degrees and enforce float32
-                if np.issubdtype(ds[var].dtype, np.integer):
-                    ds[var] = (ds[var] / 100.0).astype(np.float32)
-                else:
-                    # Enforce float32 if already floating point (e.g., float64)
-                    ds[var] = ds[var].astype(np.float32)
+    angle_vars = ["viewing_azimuth", "viewing_zenith", "solar_azimuth", "solar_zenith"]
+    div_factor = 100 if sensor == "OLI" else 1.0
+    for var in angle_vars:
+        if var in ds.data_vars:
+            # Convert raw integer angles (scaled by 100) to degrees float32
+            # if np.issubdtype(ds[var].dtype, np.integer):
+            ds[var] = (ds[var] / div_factor).astype(np.float32)
+            #else:
+            #    ds[var] = ds[var].astype(np.float32)
+
+                    
 
     # 2. Process Reflectance (rhot)
     if sensor == "OLI":
@@ -465,5 +466,8 @@ def process_image_dataset(ds: xr.Dataset) -> xr.Dataset:
 
         # Correct for BOA/TOA offset and scale DN to 0-1 reflectance range
         ds["rhot"] = ((ds["rhot"].astype(np.float32) + rad_offset) / quantification_value).astype(np.float32)
+
+
+    # Update calculate and add the rho_t to the xarray dataset as well
 
     return ds

@@ -14,6 +14,7 @@ Email:                  william.wainwright@ssaihq.com/william.wainwright@nasa.go
 import numpy as np
 import pyproj
 import rasterio
+import pandas as pd
 import xarray as xr
 from typing import Callable
 from scipy.interpolate import RegularGridInterpolator
@@ -220,7 +221,7 @@ def interpolate(array: np.ndarray, step: int) -> np.ndarray:
         )
 
     if step < 1:
-        raise ValueError(f"Step size must be an integer >= 1, got {step}.")
+       raise  ValueError(f"Step size must be an integer >= 1, got {step}.")
 
     # Fast path: step of 1 requires no subsampling or interpolation
     if step == 1:
@@ -1137,7 +1138,7 @@ def _process_chunk_block(
     sol_zen_rad = np.radians(sol_zen)
     cos_sol_zen = np.cos(sol_zen_rad)
     view_zen_rad = np.radians(view_zen)
-    rel_az = np.abs(view_az - sol_az - 180)
+    rel_az = np.abs((view_az - sol_az) % 360 - 180) #np.abs(view_az - sol_az - 180) % 360
     airmass = (1.0 / cos_sol_zen) + (1.0 / np.cos(view_zen_rad))
 
     # 4. Rayleigh Coarse-Grid Evaluation
@@ -1246,6 +1247,7 @@ def calculate_glint_coefficient(view_zen, sol_zen, rel_az, windspeed):
 
     # Surface slope probability density function
     Ps = 1.0 / (np.pi * sigma**2) * np.exp(-1.0 * np.tan(beta)**2 / sigma**2)
+    Ps = Ps.transpose(*beta.dims)
 
     # Refraction index ratio for water/air
     refraction = 1.34 #4.0 / 3.0
@@ -1418,7 +1420,7 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
     ystart = attrs.get("ystart", 0)
     ystep = attrs.get("ystep", height)
 
-    coarse_size = 100
+    coarse_size = fixed_resolution #100
     coarse_step = max(1, int(coarse_size / fixed_resolution))
 
     if hasattr(ds, "rio") and ds.rio.transform() is not None:
@@ -1493,24 +1495,36 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
     ds_out["longitude"] = long_da
     ds_out["solar_zenith"] = sol_zen_da
     ds_out["solar_azimuth"] = sol_az_da
+    
     ds_out["water_vapor"] = (ancillary_rasters_da[ancillary_keys.index("water_vapor")]).chunk(chunk_spec).astype(np.float32)
 
-    # Non-MSI viewing geometry is band-invariant (assign once)
-    if sensor != "msi" or "wavelength" not in ds["viewing_zenith"].dims:
-        ds_out["viewing_zenith"] = ds["viewing_zenith"].chunk(chunk_spec).astype(np.float32)
-        ds_out["viewing_azimuth"] = ds["viewing_azimuth"].chunk(chunk_spec).astype(np.float32)
-        
-    # --- 5. Loop Wavelengths & Apply Correction ---
+    # --- Loop Wavelengths & Apply Correction ---
     wavelengths = (
         ds["wavelength"].values if "wavelength" in ds.coords else attrs.get("wavelengths", [])
     )
 
+    # Dictionary to accumulate 2D DataArrays prior to 3D concatenation
+    rho_rc_dict, view_zen_dict, view_az_dict = {}, {}, {}
+
     for wl in wavelengths:
         str_wl = str(wl)
+        
+        # -------------------------------------------------------------------------
+        # Ancillary Parameter Lookup
+        # Match the current loop wavelength against lookup tables with a 20nm tolerance
+        # -------------------------------------------------------------------------
         lut_wave = get_safe_wavelength(wl, lut_list.keys(), threshold=20)
-        sensor_wave = get_safe_wavelength(wl, ancillary_scalars["sensor_data"].keys(), threshold=20 )
-        solar_irradiance = np.float32(ancillary_scalars["sensor_data"][sensor_wave]["solar_irradiance"]  / (earth_sun_distance**2) )
+        sensor_wave = get_safe_wavelength(wl, ancillary_scalars["sensor_data"].keys(), threshold=20)
+        
+        # Calculate top-of-atmosphere solar irradiance corrected for Earth-Sun distance
+        solar_irradiance = np.float32(
+            ancillary_scalars["sensor_data"][sensor_wave]["solar_irradiance"] / (earth_sun_distance**2)
+        )
 
+        # -------------------------------------------------------------------------
+        # Input Radiance/Reflectance Data Selection
+        # Dynamically extract the target band based on the dataset schema
+        # -------------------------------------------------------------------------
         if "rhot" in ds and "wavelength" in ds["rhot"].dims:
             img_da = ds["rhot"].sel(wavelength=wl)
         elif f"band_{str_wl}" in ds:
@@ -1518,24 +1532,35 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
         else:
             img_da = ds["images"][str_wl]
 
+        # Rechunk and cast data for memory efficiency during parallel computation
         img_da = img_da.chunk(chunk_spec).astype(np.float32)
 
+        # -------------------------------------------------------------------------
+        # Viewing Geometry Alignment
+        # Handle per-band viewing angles (e.g., Sentinel-2 MSI) vs. fixed static angles
+        # -------------------------------------------------------------------------
         if sensor == "msi" and "wavelength" in ds["viewing_zenith"].dims:
             view_zen_da = ds["viewing_zenith"].sel(wavelength=wl).chunk(chunk_spec).astype(np.float32)
             view_az_da = ds["viewing_azimuth"].sel(wavelength=wl).chunk(chunk_spec).astype(np.float32)
             
-            # Store per-band viewing arrays in ds_out if MSI wavelength-dependent
-            ds_out[f"viewing_zenith_{str_wl}"] = view_zen_da
-            ds_out[f"viewing_azimuth_{str_wl}"] = view_az_da
+            # Save individual per-band angles directly into the output dataset
+            view_zen_dict[wl] = view_zen_da
+            view_az_dict[wl] = view_az_da
         else:
-            view_zen_da = ds_out["viewing_zenith"]
-            view_az_da = ds_out["viewing_azimuth"]
+            # Fall back to global/static viewing angles across all wavelengths
+            view_zen_da = ds["viewing_zenith"].chunk(chunk_spec).astype(np.float32)
+            view_az_da = ds["viewing_azimuth"].chunk(chunk_spec).astype(np.float32)
 
+        # Assemble argument vector for vectorized atmospheric correction processing
         args = [
             img_da, sol_zen_da, sol_az_da, view_zen_da, view_az_da,
             lat_da, long_da, *ancillary_rasters_da
         ]
 
+        # -------------------------------------------------------------------------
+        # Lazy Parallel Processing (Dask + UFunc)
+        # Apply atmospheric correction block-by-block across spatial chunks
+        # -------------------------------------------------------------------------
         rho_rc_da = xr.apply_ufunc(
             _process_chunk_block,
             *args,
@@ -1556,21 +1581,43 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
             output_dtypes=[np.float32],
         )
 
-        ds_out[f"rho_rc_{str_wl}"] = rho_rc_da
+        # -------------------------------------------------------------------------
+        # Output Staging
+        # Map calculated 2D array (x, y) to its numerical wavelength key
+        # -------------------------------------------------------------------------
+        rho_rc_dict[wl] = rho_rc_da
+
+    # -----------------------------------------------------------------------------
+    # Final Data Assembly
+    # Stack 2D slices along a newly created 'wavelength' coordinate axis -> (x, y, wavelength)
+    # -----------------------------------------------------------------------------
+    ds_out["rho_rc"] = xr.concat(list(rho_rc_dict.values()),   dim=pd.Index(rho_rc_dict.keys(), name="wavelength"))
+
+    # Non-MSI viewing geometry is band-invariant (assign once)
+    if sensor != "msi" or "wavelength" not in ds["viewing_zenith"].dims:
+        ds_out["viewing_zenith"] = ds["viewing_zenith"].chunk(chunk_spec).astype(np.float32)
+        ds_out["viewing_azimuth"] = ds["viewing_azimuth"].chunk(chunk_spec).astype(np.float32)
+    elif sensor == "msi" and "wavelength" in ds["viewing_zenith"].dims:
+        ds_out["viewing_zenith"] = xr.concat(list(view_zen_dict.values()),   dim=pd.Index(view_zen_dict.keys(), name="wavelength"))
+        ds_out["viewing_zenith"] = ds_out["viewing_zenith"].chunk(chunk_spec).astype(np.float32)
+        ds_out["viewing_azimuth"] = xr.concat(list(view_az_dict.values()),   dim=pd.Index(view_az_dict.keys(), name="wavelength"))
+        ds_out["viewing_azimuth"] = ds_out["viewing_azimuth"].chunk(chunk_spec).astype(np.float32)
+    else:
+        raise  ValueError(f"Unsupported sensor: {sensor} with wavelength wise bands")
 
     # Generate the mask for the image
-    # 1. Compute NDWI
+    # Compute NDWI
     ndwi = (ds["rhot"].sel(wavelength=wavelengths[2]) - ds["rhot"].sel(wavelength=wavelengths[4])) / (ds["rhot"].sel(wavelength=wavelengths[2]) + ds["rhot"].sel(wavelength=wavelengths[4]))
     ndwi = ndwi.rename("NDWI")
     # Assuming view_zen, sol_zen, rel_az, and windspeed are 3D xr.DataArrays
     glint_da = calculate_glint_coefficient(
         view_zen=  ds['viewing_zenith'], # Radians
         sol_zen=   ds['solar_zenith'],   # Radians
-        rel_az=    np.abs(ds['viewing_zenith'] - ds['solar_zenith'] - 180),# Radians
+        rel_az=    np.abs( ((ds['viewing_azimuth'] - ds['solar_azimuth'])%360) - 180 ), #np.abs(ds['viewing_azimuth'] - ds['solar_azimuth'] - 180) % 360,# Radians
         windspeed= (ancillary_rasters_da[ancillary_keys.index("wind_speed")]).chunk(chunk_spec).astype(np.float32)    # m/s
     )
     # Assign metadata name
-    glint_da = xr.DataArray(glint_da, coords=ds['viewing_zenith'].coords, dims=ds['viewing_zenith'].dims).chunk(chunk_spec)
+    glint_da = xr.DataArray(glint_da, coords=ds['viewing_azimuth'].coords, dims=ds['viewing_azimuth'].dims).chunk(chunk_spec)
     glint_da = glint_da.rename("glint_coefficient")
 
 
@@ -1588,8 +1635,8 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
                         lastChunk=True,                                                             # Set True if processing the final chunk
                         )
 
-    ds_out["water_mask"] = mask_da
-    ds_out["glint_coefficient"] = glint_da
+    ds_out["water_mask"] = mask_da.chunk(chunk_spec)
+    ds_out["glint_coefficient"] = glint_da.chunk(chunk_spec)
     
 
     if hasattr(ds, "rio") and ds.rio.crs is not None:

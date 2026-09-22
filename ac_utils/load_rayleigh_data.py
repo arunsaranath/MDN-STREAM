@@ -17,6 +17,7 @@ import numpy as np
 import pyproj
 import rasterio
 import xarray as xr
+import rioxarray
 import netCDF4 as nc
 import srtm
 from datetime import datetime as dt
@@ -25,6 +26,7 @@ from scipy.ndimage import zoom
 from typing import Callable, Iterable, Union, Optional, Any
 
 
+from s2cloudless import S2PixelCloudDetector
 from .aq_error import Error_Handler
 
 
@@ -86,9 +88,8 @@ class transformObj:
     def __post_init__(self):
         if self.pyproj_transformer is None and self.crs is not None:
             # Pre-build transformer to reproject map units to WGS84 (lon, lat)
-            self.pyproj_transformer = pyproj.Transformer.from_crs(
-                self.crs, "EPSG:4326", always_xy=True
-            )
+            #self.pyproj_transformer = pyproj.Transformer.from_crs(self.image_transform, "EPSG:4326", always_xy=True)
+            self.pyproj_transformer = pyproj.Transformer.from_crs(self.crs, "EPSG:4326", always_xy=True)
 
 
 @Error_Handler
@@ -687,16 +688,17 @@ def loadLandsatLUTs(path: str | Path) -> dict[str, dict[str, Any]]:
 
 
 @Error_Handler
-def loadSentinelLUTs(sensor: str) -> dict[str, dict[str, Any]]:
+def loadSentinelLUTs(path: str | Path, sensor: str = "S2A") -> dict[str, dict[str, Any]]:
     """Loads Sentinel-2 Rayleigh Look-Up Tables (LUTs) from HDF4 files into a nested dictionary.
 
-    Selects sensor-specific (S2A vs S2B/S2C) band mapping and directory paths, parses 
-    wavelength lookup files, remaps band numbers to standardized wavelength tags, 
-    and loads Stokes vector components (I, Q, U), optical thickness, viewing geometry, 
-    and wind parameters.
+    Searches the target directory for HDF4 LUT files, parses central wavelengths, 
+    remaps band numbers to standardized wavelength tags, and loads Stokes vector 
+    components (I, Q, U), Rayleigh optical thickness, zenith angles, and wind speed parameters.
 
     Args:
-        sensor (str): Sentinel-2 sensor name or identifier string (e.g., 'MSI', 'S2A', 'S2B').
+        path (str | Path): Path to directory containing Sentinel Rayleigh LUT HDF4 files.
+        sensor (str, optional): Sentinel-2 sensor variant ('S2A' vs 'S2B'/'S2C') to handle 
+            minor central wavelength differences. Defaults to "S2A".
 
     Returns:
         dict[str, dict[str, Any]]: A nested dictionary structured as:
@@ -709,28 +711,30 @@ def loadSentinelLUTs(sensor: str) -> dict[str, dict[str, Any]]:
                 - 'sigma_wind': Wind speed parameter array ('sigma')
 
     Raises:
-        FileNotFoundError: If the target LUT directory does not exist.
+        FileNotFoundError: If the provided directory does not exist.
     """
+    global rayleigh_lut
+
     # -------------------------------------------------------------------------
-    # 1. Define Sensor-Specific Directories and Band Mappings
+    # 1. Path Initialization & Band Mappings
     # -------------------------------------------------------------------------
-    if 'a' in sensor.lower():
-        lut_dir = Path("LUTs/s2a/rayleigh")
+    path_obj = Path(path)
+    if not path_obj.is_dir():
+        raise FileNotFoundError(f"LUT directory not found: {path_obj}")
+
+    # Central wavelength-to-band-number lookup based on sensor platform
+    if 'a' in str(sensor).lower():
         bands = {
             '443': '01', '492': '02', '560': '03', '665': '04',
             '704': '05', '740': '06', '783': '07', '835': '08',
             '865': '8A', '945': '09', '1374': '10', '1613': '11', '2200': '12'
         }
     else:
-        lut_dir = Path("LUTs/s2b/rayleigh")
         bands = {
             '442': '01', '492': '02', '559': '03', '665': '04',
             '704': '05', '739': '06', '780': '07', '835': '08',
             '864': '8A', '943': '09', '1377': '10', '1611': '11', '2184': '12'
         }
-
-    if not lut_dir.is_dir():
-        raise FileNotFoundError(f"Sentinel LUT directory not found at: {lut_dir}")
 
     # Standardized output wavelength keys mapped by band number
     adjusted_wavelengths = {
@@ -741,13 +745,11 @@ def loadSentinelLUTs(sensor: str) -> dict[str, dict[str, Any]]:
 
     rayleigh_lut = {}
 
-    # -------------------------------------------------------------------------
-    # 2. Discover HDF4 Files in LUT Directory
-    # -------------------------------------------------------------------------
-    lut_list = [f for f in lut_dir.iterdir() if f.is_file() and '.hdf' in f.name.lower()]
+    # Discover HDF4 lookup files
+    lut_list = [f for f in path_obj.iterdir() if f.is_file() and '.hdf' in f.name.lower()]
 
     # -------------------------------------------------------------------------
-    # 3. Read Stokes Vectors & Parameters Across Bands
+    # 2. Extract Stokes Vector Components & Metadata Across Wavelengths
     # -------------------------------------------------------------------------
     for file_path in lut_list:
         file_name = file_path.name
@@ -767,15 +769,53 @@ def loadSentinelLUTs(sensor: str) -> dict[str, dict[str, Any]]:
             # Rayleigh optical thickness
             'optical_thickness': read_hdf4_variable(file_str, 'taur'),
 
-            # Solar and viewing angle grids
+            # Angle grids
             'theta_solar_zenith': read_hdf4_variable(file_str, 'solz'),
             'theta_viewing': read_hdf4_variable(file_str, 'senz'),
 
-            # Wind speed parameter
+            # Surface wind parameters
             'sigma_wind': read_hdf4_variable(file_str, 'sigma'),
         }
 
     return rayleigh_lut
+
+
+# Helper function to read and resample any raster layer to fixed_resolution
+def read_raster(path: Path, fixed_resolution: int= 60) -> tuple[np.ndarray, str, rasterio.Affine]:
+    #path = path_obj / file_name
+
+    # 1. Open dataset lazily using small Dask chunks to prevent RAM spikes
+    rds = rioxarray.open_rasterio(path, chunks={"x": 512, "y": 512})
+
+    # Extract 2D DataArray (band 1)
+    da = rds.sel(band=1)
+
+    # 2. Resample lazily to target fixed_resolution if resolutions differ
+    native_res_x = abs(da.rio.transform().a)
+    if not np.isclose(native_res_x, fixed_resolution):
+        da = da.rio.reproject(
+            da.rio.crs,
+            resolution=(fixed_resolution, -fixed_resolution),
+            resampling=Resampling.bilinear,
+        )
+
+    # 3. Evaluate Dask graph and convert to float32 NumPy array
+    data = da.compute().values.astype(np.float32)
+
+    # 4. Construct new Affine transform matching fixed_resolution
+    src_transform = da.rio.transform()
+    new_transform = rasterio.Affine(
+        fixed_resolution,
+        src_transform.b,
+        src_transform.c,
+        src_transform.d,
+        -fixed_resolution,
+        src_transform.f,
+    )
+
+    crs_str = str(da.rio.crs) if da.rio.crs else ""
+
+    return data, crs_str, new_transform
 
 
 @Error_Handler
@@ -838,19 +878,19 @@ def read_landsat_images(
     assert len(img_names_list) > 0, "empty rhot list"
 
     # Helper function to read a raster into a 2D numpy array
-    def read_raster(file_name: str) -> tuple[np.ndarray, str, rasterio.Affine]:
+    """def read_raster(file_name: str) -> tuple[np.ndarray, str, rasterio.Affine]:
         with rasterio.open(path_obj / file_name) as src:
-            return src.read(1), str(src.crs), src.transform
+            return src.read(1), str(src.crs), src.transform"""
 
     # -------------------------------------------------------------------------
     # 3. Read Ancillary Geometry & QA
     # -------------------------------------------------------------------------
-    v_az, ref_crs, ref_transform = read_raster(view_az_img)
-    v_zen, _, _ = read_raster(view_zen_img)
-    s_az, _, _ = read_raster(sol_az_img)
-    s_zen, _, _ = read_raster(sol_zen_img)
+    v_az, ref_crs, ref_transform = read_raster((path_obj /view_az_img), fixed_resolution)
+    v_zen, _, _ = read_raster((path_obj /view_zen_img), fixed_resolution)
+    s_az, _, _ = read_raster((path_obj /sol_az_img), fixed_resolution)
+    s_zen, _, _ = read_raster((path_obj /sol_zen_img), fixed_resolution)
 
-    quality_arr = read_raster(qa_list[0])[0] if qa_list else None
+    quality_arr = read_raster((path_obj /qa_list[0]), fixed_resolution)[0] if qa_list else None
 
     # -------------------------------------------------------------------------
     # 4. Read Spectral Bands & Stack into 3D Array
@@ -865,7 +905,7 @@ def read_landsat_images(
         if wavelength not in processed_wavelengths:
             continue
 
-        data, _, _ = read_raster(img_name)
+        data, _, _ = read_raster((path_obj / img_name), fixed_resolution)
         band_arrays.append(data)
         active_wavelengths.append(int(wavelength))
 
@@ -918,12 +958,14 @@ def read_landsat_images(
     return ds
 
 
+from rasterio.enums import Resampling
+
 @Error_Handler
 def read_sentinel_images(
     scene_id: str,
     tile_id: str,
     path: str | Path,
-    fixed_resolution: int = 30,
+    fixed_resolution: int = 20,
     show: bool = False,
 ) -> xr.Dataset:
     """Load Sentinel-2 MSI image bands and solar/viewing geometry into an xarray Dataset.
@@ -937,13 +979,13 @@ def read_sentinel_images(
         tile_id (str): MGRS tile identifier (e.g., 'T18TWL').
         path (str | Path): Path to directory containing Sentinel image band files.
         fixed_resolution (int, optional): Target spatial resolution in meters. 
-            Defaults to 30.
+            Defaults to 20.
         show (bool, optional): Reserved flag for visualization triggers. 
             Defaults to False.
 
     Returns:
         xr.Dataset: Dataset structured with:
-            - Data Variable 'reflectance': 3D DataArray (wavelength, y, x)
+            - Data Variable 'rhot': 3D DataArray (wavelength, y, x)
             - Data Variable 'viewing_azimuth': 3D DataArray (wavelength, y, x)
             - Data Variable 'viewing_zenith': 3D DataArray (wavelength, y, x)
             - Data Variables 'solar_azimuth', 'solar_zenith': 2D DataArrays (y, x)
@@ -954,11 +996,14 @@ def read_sentinel_images(
         AssertionError: If no image band files are found or if viewing angle counts 
             do not match the target wavelength array count.
     """
+    gtifs = dict()
+    projections = dict()
+    
     # -------------------------------------------------------------------------
     # 1. Path Initialization & Target Wavelength Definitions
     # -------------------------------------------------------------------------
     path_obj = Path(path)
-    all_files = [f.name for f in path_obj.iterdir() if f.is_file()]
+    all_files = [f.name for f in path_obj.iterdir() if not f.is_dir()]
 
     processed_wavelengths = [
         "443", "490", "560", "665", "705", "740", "780", 
@@ -976,40 +1021,61 @@ def read_sentinel_images(
         print(f"Directory listing: {all_files}")
         raise AssertionError(f"No JP2 band files matching tile '{tile_id}' found in {path_obj}")
 
-    # Helper function to read a raster file and retrieve spatial metadata
-    def read_raster(file_name: str) -> tuple[np.ndarray, str, rasterio.Affine]:
-        with rasterio.open(path_obj / file_name) as src:
-            return src.read(1), str(src.crs), src.transform
-
     # -------------------------------------------------------------------------
-    # 2. Load Solar Geometry Arrays (Scene-Wide)
+    # 2. Load & Resample Solar Geometry Arrays (Scene-Wide)
     # -------------------------------------------------------------------------
     sol_az_img = [f for f in all_files if '_SAA' in f and scene_id in f][0]
     sol_zen_img = [f for f in all_files if '_SZA' in f and scene_id in f][0]
 
-    s_az_data, ref_crs, ref_transform = read_raster(sol_az_img)
-    s_zen_data, _, _ = read_raster(sol_zen_img)
+    s_az_data, ref_crs, ref_transform = read_raster((path_obj / sol_az_img), fixed_resolution)
+    s_zen_data, _, _ = read_raster((path_obj / sol_zen_img), fixed_resolution)
 
     # -------------------------------------------------------------------------
-    # 3. Read Spectral Bands (JP2 Files)
+    # 3. Read & Resample Spectral Bands (JP2 Files)
     # -------------------------------------------------------------------------
-    band_arrays = {}
-    
-    for file_name in gtif_files:
-        # Extract band number identifier (e.g., 'B02' -> '02')
-        band_num = file_name.split('_')[-1].split('.')[0].replace('B', '')
-        
-        # Resolve to central wavelength using global dictionary lookup
-        wavelength = str(MSI_wavelengths[band_num])
+    """for file in gtif_files:
+        file_path = path_obj / file
+        band_num = file_path.stem.split("_")[-1].replace("B", "")
+        wavelength = MSI_wavelengths[band_num]
 
         if wavelength not in processed_wavelengths:
             continue
 
-        data, _, _ = read_raster(file_name)
-        band_arrays[wavelength] = data
+        with rasterio.open(file_path) as gtif:
+            scale_factor_x = abs(gtif.transform.a) / fixed_resolution
+            scale_factor_y = abs(gtif.transform.e) / fixed_resolution
+            out_height = int(round(gtif.height * scale_factor_y))
+            out_width = int(round(gtif.width * scale_factor_x))
+
+            projections[wavelength] = gtif.crs.to_wkt()
+
+            gtifs[wavelength] = gtif.read(
+                out_shape=(gtif.count, out_height, out_width),
+                resampling=Resampling.bilinear
+            )"""
+
+    for file in gtif_files:
+        file_path = path_obj / file
+        band_num = file_path.stem.split("_")[-1].replace("B", "")
+        wavelength = MSI_wavelengths[band_num]
+
+        if wavelength not in processed_wavelengths:
+            continue
+
+        # Use the refactored read_raster function
+        data, crs_str, new_transform = read_raster((path_obj / file), fixed_resolution)
+
+        # Store metadata and resampled band data
+        projections[wavelength] = crs_str
+        
+        # Ensure 3D shape (1, H, W) to match gtif.read(out_shape=(gtif.count, ...)) if needed
+        if data.ndim == 2:
+            gtifs[wavelength] = np.expand_dims(data, axis=0)
+        else:
+            gtifs[wavelength] = data
 
     # -------------------------------------------------------------------------
-    # 4. Read Per-Band Viewing Geometry Layers
+    # 4. Read & Resample Per-Band Viewing Geometry Layers
     # -------------------------------------------------------------------------
     view_az_files = [f for f in all_files if '_VAA' in f and scene_id in f]
     view_zen_files = [f for f in all_files if '_VZA' in f and scene_id in f]
@@ -1020,13 +1086,13 @@ def read_sentinel_images(
     for file_az in view_az_files:
         wavelength_az = file_az.split('_')[-1].replace('nm.TIF', '')
         if wavelength_az in processed_wavelengths:
-            data, _, _ = read_raster(file_az)
+            data, _, _ = read_raster((path_obj / file_az), fixed_resolution)
             v_az_arrays[wavelength_az] = data
 
     for file_zen in view_zen_files:
         wavelength_zen = file_zen.split('_')[-1].replace('nm.TIF', '')
         if wavelength_zen in processed_wavelengths:
-            data, _, _ = read_raster(file_zen)
+            data, _, _ = read_raster((path_obj / file_zen), fixed_resolution)
             v_zen_arrays[wavelength_zen] = data
 
     assert len(v_az_arrays) == len(processed_wavelengths), (
@@ -1039,9 +1105,9 @@ def read_sentinel_images(
     sorted_wavelength_ints = sorted([int(w) for w in processed_wavelengths])
     sorted_wavelength_strs = [str(w) for w in sorted_wavelength_ints]
 
-    reflectance_stack = np.stack([band_arrays[w] for w in sorted_wavelength_strs], axis=0)
-    v_az_stack = np.stack([v_az_arrays[w] for w in sorted_wavelength_strs], axis=0)
-    v_zen_stack = np.stack([v_zen_arrays[w] for w in sorted_wavelength_strs], axis=0)
+    reflectance_stack = np.stack([np.squeeze(gtifs[w]) for w in sorted_wavelength_strs], axis=0)
+    v_az_stack = np.stack([np.squeeze(v_az_arrays[w]) for w in sorted_wavelength_strs], axis=0)
+    v_zen_stack = np.stack([np.squeeze(v_zen_arrays[w]) for w in sorted_wavelength_strs], axis=0)
 
     # -------------------------------------------------------------------------
     # 6. Construct Spatial Coordinates & Assemble Dataset
@@ -1054,7 +1120,7 @@ def read_sentinel_images(
 
     ds = xr.Dataset(
         data_vars={
-            # Primary 3D Spectral Refectance Cube
+            # Primary 3D Spectral Reflectance Cube
             "rhot": (("wavelength", "y", "x"), reflectance_stack),
             # Per-Band 3D Viewing Geometry Cubes
             "viewing_azimuth": (("wavelength", "y", "x"), v_az_stack),
@@ -1117,8 +1183,7 @@ def load_landsat(
         fixed_resolution=fixed_resolution,
     )
 
-    width = img_ds.sizes["x"]
-    height = img_ds.sizes["y"]
+    width, height = img_ds.sizes["x"], img_ds.sizes["y"]
     sensor = "OLI"
 
     # Calculate Earth-Sun distance
@@ -1183,7 +1248,7 @@ def load_landsat(
     return img_ds   
 
 
-@Error_Handler
+"""@Error_Handler
 def mask_s2cloudless(
     gtifs: dict[str, Any],
     width: int,
@@ -1191,7 +1256,7 @@ def mask_s2cloudless(
     rad_offset: float,
     fixed_resolution: int
 ) -> np.ndarray:
-    """Generates a binary cloudless mask for Sentinel-2 using s2cloudless.
+    Generates a binary cloudless mask for Sentinel-2 using s2cloudless.
 
     Extracts required spectral bands, applies radiometric offsets and scale factors,
     runs the `S2PixelCloudDetector`, inverts mask values (1 for clear, 0 for cloudy),
@@ -1207,7 +1272,7 @@ def mask_s2cloudless(
     Returns:
         np.ndarray: 2D floating-point numpy array where 1.0 indicates clear/cloudless
             pixels and 0.0 indicates cloud coverage.
-    """
+
     # Required spectral bands for S2PixelCloudDetector (10 bands)
     used_wavelengths = {'443', '490', '665', '705', '833', '864', '944', '1375', '1609', '2200'}
     images = []
@@ -1296,7 +1361,82 @@ def mask_s2cloudless(
 
     print(f"Dimensions of scaled cloud mask: {cloud_mask.shape}")
 
-    return cloud_mask
+    return cloud_mask"""
+
+
+@Error_Handler
+def mask_s2cloudless(
+    ds: xr.Dataset,
+    rad_offset: float = 0.0,
+    var_name: str = "rhot"
+) -> xr.DataArray:
+    """Generates a binary cloudless mask for Sentinel-2 using s2cloudless from an xarray Dataset.
+
+    Args:
+        ds (xr.Dataset): Input dataset containing a 3D spectral variable with 
+            coords ('wavelength', 'y', 'x').
+        rad_offset (float, optional): Radiometric offset value to apply if needed. 
+            Defaults to 0.0.
+        var_name (str, optional): Name of the spectral reflectance variable in `ds`. 
+            Defaults to "rhot".
+
+    Returns:
+        xr.DataArray: 2D DataArray (y, x) where 1.0 indicates clear/cloudless 
+            pixels and 0.0 indicates cloud coverage.
+    """
+    # 10 spectral bands required by s2cloudless (order-sensitive for detector input)
+    s2cloudless_wavelengths = ds.coords['wavelength']
+
+    # -------------------------------------------------------------------------
+    # 1. Extract Wavelengths and Format Data (height, width, bands)
+    # -------------------------------------------------------------------------
+    # Select only the required 10 bands using xarray label indexing
+    ds_bands = ds[var_name].sel(wavelength=s2cloudless_wavelengths)
+
+    # Convert to float32, apply radiometric offset, and scale if raw DNs are provided
+    # (Omit / 10000.0 if 'rhot' is already scaled reflectance 0-1)
+    bands_data = (ds_bands.values.astype(np.float32) + rad_offset) / 10000.0
+
+    # Transpose from (wavelength, y, x) to (y, x, wavelength) for s2cloudless
+    bands_data = np.transpose(bands_data, (1, 2, 0))
+
+    print(f"Loaded {bands_data.shape[2]} spectral bands for s2cloudless.")
+
+    # -------------------------------------------------------------------------
+    # 2. Run s2cloudless Pixel Detector
+    # -------------------------------------------------------------------------
+    threshold = 0.4
+    cloud_detector = S2PixelCloudDetector(
+        threshold=threshold, 
+        average_over=4, 
+        dilation_size=2, 
+        all_bands=True                                                  #changed to true based on load function
+    )
+
+    # Output mask: 1 = Cloud, 0 = Non-cloud
+    raw_cloud_mask = cloud_detector.get_cloud_masks(bands_data[np.newaxis, ...])
+    cloud_mask = np.squeeze(raw_cloud_mask).astype(np.float32)
+
+    # -------------------------------------------------------------------------
+    # 3. Invert Mask Logic (1.0 = Clear/Cloudless, 0.0 = Cloud)
+    # -------------------------------------------------------------------------
+    clear_mask = np.where(cloud_mask == 1, 0.0, 1.0)
+
+    # -------------------------------------------------------------------------
+    # 4. Wrap as xarray.DataArray matching Dataset's (y, x) spatial grid
+    # -------------------------------------------------------------------------
+    cloudless_da = xr.DataArray(
+        data=clear_mask,
+        coords={"y": ds.coords["y"], "x": ds.coords["x"]},
+        dims=["y", "x"],
+        name="s2cloudless_mask",
+        attrs={
+            "description": "Binary cloudless mask (1.0 = clear, 0.0 = cloud)",
+            "threshold": threshold,
+        }
+    )
+
+    return cloudless_da    
 
 
 @Error_Handler
@@ -1396,6 +1536,70 @@ def read_resample_sentinel_range(
     return img
 
 
+def load_sentinel_meta(path: str | Path) -> dict:
+    """Load and parse metadata from a Sentinel-2 SAFE product XML file.
+
+    Locates the main XML metadata file (containing 'mtd' and '.xml') within the
+    provided directory path, parses its hierarchical structure, and returns
+    the contents as a nested dictionary.
+
+    Parameters
+    ----------
+    path : str or pathlib.Path
+        Path to the Sentinel-2 SAFE dataset or metadata directory.
+
+    Returns
+    -------
+    dict
+        Parsed metadata key-value dictionary extracted from the XML file.
+
+    Raises
+    ------
+    FileNotFoundError
+        If no matching XML metadata file containing 'mtd' and '.xml' is found
+        within the specified path directory.
+    """
+    path_obj = Path(path)
+
+    # Locate the metadata XML file within the target directory
+    xml_file = None
+    for file_path in path_obj.iterdir():
+        filename_lower = file_path.name.lower()
+        if ".xml" in filename_lower and "mtd" in filename_lower:
+            xml_file = file_path
+            break
+
+    if xml_file is None:
+        raise FileNotFoundError(
+            f"No XML metadata file containing 'mtd' found in path: {path_obj}"
+        )
+
+    print(f"Loading metadata from {xml_file.name}")
+
+    # Open XML file and convert elements into a dictionary structure
+    root = ET.parse(xml_file).getroot()
+    xmlstr = ET.tostring(root, encoding="utf-8", method="xml")
+    meta = dict(xmltodict.parse(xmlstr))
+
+    # Strip top-level root element and XML namespaces if present
+    try:
+        # Standard Sentinel-2 L1C product root tag
+        if "ns0:Level-1C_User_Product" in meta:
+            meta = meta["ns0:Level-1C_User_Product"]
+            meta = {
+                k.split(":")[1] if ":" in k else k: v for (k, v) in meta.items()
+            }
+        elif "n1:Level-1C_User_Product" in meta:
+            meta = meta["n1:Level-1C_User_Product"]
+            meta = {
+                k.split(":")[1] if ":" in k else k: v for (k, v) in meta.items()
+            }
+    except Exception as e:
+        print(f"Unable to prune upper tree level: {e}")
+
+    return meta
+
+
 @Error_Handler
 def load_sentinel(
     scene_id: str,
@@ -1403,6 +1607,7 @@ def load_sentinel(
     stepsize: int = 1,
     fixed_resolution: int = 30,
     no_gas_absorption: bool = True,
+    ancillary_dir: str | Path = "ancillary/",
 ) -> xr.Dataset:
     """Loads Sentinel-2 MSI scene data, metadata, ancillary metrics, cloud mask, and LUTs into an xarray Dataset.
 
@@ -1441,7 +1646,7 @@ def load_sentinel(
     # -------------------------------------------------------------------------
     # Example scene_id: S2A_MSIL1C_20200202T102121_N0208_R065_T31UFU_20200202T122000
     timestamp_str = scene_id.split('_')[2]
-    date = dt.strptime(timestamp_str.split('T')[0], '%Y%m%d').strftime("%Y-%m-%d")
+    date = dt.strptime(timestamp_str.split('T')[0], r'%Y%m%d').strftime(r"%Y-%m-%d")
     hour = int(timestamp_str.split('T')[1][:2])
 
     # Find matching .SAFE directory
@@ -1472,81 +1677,91 @@ def load_sentinel(
 
     tile_id = scene_id.split('_')[5]
 
-    (
-        gtifs, 
-        transforms, 
-        projections, 
-        viewing_azimuth_gtifs, 
-        viewing_zenith_gtifs, 
-        solar_azimuth_gtif, 
-        solar_zenith_gtif
-    ) = read_sentinel_images(scene_id, tile_id, image_path, fixed_resolution)
+    # Get the data for this image
+    ds = read_sentinel_images(scene_id, tile_id, image_path, fixed_resolution)
 
     # -------------------------------------------------------------------------
     # 3. Earth-Sun Distance & Spatial Grid Scaling
     # -------------------------------------------------------------------------
     earth_sun_distance = get_earth_sun_distance(date)
 
-    ref_gtif = gtifs['443']
-    ct = transforms['443']
+    #ref_gtif = gtifs['443']
+    #ct = transforms['443']
 
-    scale_factor = ct.px_w / fixed_resolution
-    print(f"Scale factor: {scale_factor}")
+    #scale_factor = ct.px_w / fixed_resolution
+    #print(f"Scale factor: {scale_factor}")
 
-    width = int(ref_gtif.shape[1] * scale_factor) if hasattr(ref_gtif, 'shape') else int(ref_gtif.RasterXSize * scale_factor)
-    height = int(ref_gtif.shape[0] * scale_factor) if hasattr(ref_gtif, 'shape') else int(ref_gtif.RasterYSize * scale_factor)
+    #width = ds.coords['x'].shape   #int(ref_gtif.shape[1] * scale_factor) if hasattr(ref_gtif, 'shape') else int(ref_gtif.RasterXSize * scale_factor)
+    #height = ds.coords['y'].shape        #int(ref_gtif.shape[0] * scale_factor) if hasattr(ref_gtif, 'shape') else int(ref_gtif.RasterYSize * scale_factor)
+    width, height = ds.sizes["x"], ds.sizes["y"]
 
     # -------------------------------------------------------------------------
     # 4. Search and Read Local Atmospheric Ancillary Data
     # -------------------------------------------------------------------------
-    ancillary_path = Path(f'ancillary/{date}')
+    #ancillary_path = Path(f'ancillary/{date}')
+    ancillary_path = Path(ancillary_dir) / f"{date}"
     file_list, use_gmao = search_local_ancillary(ancillary_path, date, hour)
     ancillary_data = read_ancillary(date, hour, sensor, file_list, use_gmao)
 
     # -------------------------------------------------------------------------
     # 5. Load Rayleigh Look-Up Tables (LUTs)
     # -------------------------------------------------------------------------
-    lut_list = loadSentinelLUTs(sensor)
+    lut_list = loadSentinelLUTs((Path(__file__).resolve().parent /(f"LUTs/s{sensor}/rayleigh")))
     assert len(lut_list) > 0, "No Rayleigh LUT entries found."
 
     # -------------------------------------------------------------------------
     # 6. Extract Elevation (SRTM Altitude) & Cloud Mask
     # -------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # 5. Extract Surface Elevation (SRTM Altitude)
+    # -------------------------------------------------------------------------
     try:
-        center_lon, center_lat, _ = get_center(width, height, transforms)
+        # Use pyproj transformer stored in attributes if available, or fall back to center coords
+        if "pyproj_transformer" in ds.attrs:
+            center_x = float(ds.x[width // 2])
+            center_y = float(ds.y[height // 2])
+            center_lon, center_lat = ds.attrs["pyproj_transformer"].transform(center_x, center_y)
+        else:
+            center_transform = img_ds.attrs.get("transform")
+            center_lon, center_lat, _ = get_center(width, height, center_transform)
+
         assert center_lat != 0, "Invalid latitude center returned"
-        center_altitude = ancillary_data['altitude_tf'](center_lat, center_lon)
+        altitude = ancillary_data["altitude_tf"](center_lat, center_lon)
         assert altitude is not None, "Elevation lookup returned None"
     except Exception:
         print(f"SRTM mapping data failed for {scene_id}, defaulting to sea-level altitude (0m)")
         altitude = 0.0
 
-    cloudless_mask = mask_s2cloudless(gtifs, width, height, rad_offset, fixed_resolution)
+    cloudless_mask = mask_s2cloudless(ds, rad_offset)
+    ds["cloudless"] = cloudless_mask
 
-    # -------------------------------------------------------------------------
-    # 7. Stack Bands, Angles, and Build Coordinate Grids
-    # -------------------------------------------------------------------------
-    wavelength_keys = list(gtifs.keys())
-
-    def to_array(obj: Any) -> np.ndarray:
-        return obj.read(1) if hasattr(obj, 'read') else np.array(obj)
-
-    # Convert band dictionary to 3D array (wavelength, y, x)
-    image_arrays = [to_array(gtifs[w]) for w in wavelength_keys]
-    reflectance_stack = np.stack(image_arrays, axis=0)
-
-    # Convert band-specific viewing angle dicts to 3D arrays (wavelength, y, x)
-    viewing_azimuth_stack = np.stack([to_array(viewing_azimuth_gtifs[w]) for w in wavelength_keys], axis=0)
-    viewing_zenith_stack = np.stack([to_array(viewing_zenith_gtifs[w]) for w in wavelength_keys], axis=0)
-
-    # Build affine pixel center coordinates
-    x_coords = ct.xoffset + (np.arange(width) + 0.5) * ct.px_w
-    y_coords = ct.yoffset + (np.arange(height) + 0.5) * ct.px_h
-
+    
     # -------------------------------------------------------------------------
     # 8. Construct and Return xarray.Dataset
     # -------------------------------------------------------------------------
-    ds = xr.Dataset(
+    ds.attrs.update(
+        {
+            "scene_id": scene_id,
+            "sensor": 'MSI',
+            "date": date,
+            "hour": hour,
+            "earth_sun_distance": earth_sun_distance,
+            "center_lat": center_lat,
+            "center_lon": center_lon,
+            "altitude": altitude,
+            "rad_offset": rad_offset,
+            "stepsize": stepsize,
+            "fixed_resolution": fixed_resolution,
+            "no_gas_absorption": no_gas_absorption,
+            #"outdir": "corrected_images/",
+            #"projection": projections[0] if isinstance(projections, list) else projections,
+            #"transform": ct,
+            "ancillary_data": ancillary_data,
+            "metadata": meta,
+            "rayleigh_lut": lut_list,
+        }
+    )
+    """ds = xr.Dataset(
         data_vars={
             # 3D Spectral Reflectance Cube (wavelength, y, x)
             "reflectance": (("wavelength", "y", "x"), reflectance_stack),
@@ -1583,6 +1798,6 @@ def load_sentinel(
             "metadata": meta,
             "rayleigh_lut": lut_list,
         },
-    )
+    )"""
 
     return ds     

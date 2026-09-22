@@ -274,7 +274,7 @@ class sentinel2_driver:
     # ----------------------------------
     bands = self.reader.stack(
         list(BAND_NAMES_EOREADER[self.band_idx]),
-        resolution=self.resolution,
+        pixel_size=self.resolution,
         **kwargs,
     )
     if 'z' in bands.coords:
