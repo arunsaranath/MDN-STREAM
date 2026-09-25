@@ -24,3 +24,4 @@ toy*
 Weights/*/*/
 Weights/PACE-delivery
 Weights/EMIT
+ac_utils/ancillary/NO2/no2_climatology_v2013.hdf
