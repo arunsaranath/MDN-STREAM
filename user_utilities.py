@@ -9,7 +9,20 @@ Author:                 Arun M Saranathan
 Email:                  arun.saranathan@ssaihq.com/
                         fnu.arunmuralidharansaranathan@nasa.gov
 """
+from __future__ import annotations
+import os
 
+# =====================================================================
+# THREAD & CPU CONTENTION CONTROLS (MUST RUN BEFORE IMPORTING TF)
+# Prevents system freezing by stopping Dask & TF thread fighting
+# =====================================================================
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+os.environ["TF_NUM_INTRAOP_THREADS"] = "1"
+os.environ["TF_NUM_INTEROP_THREADS"] = "1"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress verbose C++ logs
 
 import numpy as np
 import xarray as xr
@@ -18,10 +31,27 @@ import dask
 from dask.diagnostics import ProgressBar
 from dask import array as da
 import tensorflow as tf
-
 from typing import Optional, Tuple, Union, List, Dict
 import re
 import gc
+
+# Hard-cap TensorFlow internal thread allocation
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
+# Prevent TensorFlow from allocating 100% GPU VRAM on launch
+gpus = tf.config.list_physical_devices("GPU")
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        print(f"GPU Memory Growth Setup Error: {e}")
+
+# Safe Dask worker limit (half of CPU cores)
+CPU_COUNT = os.cpu_count() or 4
+SAFE_WORKERS = max(1, CPU_COUNT // 2)
+dask.config.set({"num_workers": SAFE_WORKERS, "scheduler": "threads"})
 
 from .meta import get_sensor_bands
 from .parameters import get_args
@@ -719,11 +749,11 @@ def map_cube_mdn(
     # Execute computation with visual feedback
     if progress_vis:
         from dask.diagnostics import ProgressBar
-        print("Computing MDN predictions across chunks...")
+        print(f"Computing MDN-WQ predictions across chunks using {SAFE_WORKERS} parallel threads...")
         with ProgressBar():
-            final_ds = final_lazy_ds.compute(scheduler="single-threaded")
+            final_ds = final_lazy_ds.compute()
     else:
-        final_ds = final_lazy_ds.compute(scheduler="single-threaded")
+        final_ds = final_lazy_ds.compute()
 
     # EXTRACT SPATIAL EXTENT AS A TUPLE
     lon_min = float(final_ds.coords["longitude"].min())

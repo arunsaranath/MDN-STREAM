@@ -10,13 +10,46 @@ Email:                  arun.saranathan@ssaihq.com/
                         fnu.arunmuralidharansaranathan@nasa.gov
 """
 from __future__ import annotations
+import os
+
+# =====================================================================
+# THREAD & CPU CONTENTION CONTROLS (MUST RUN BEFORE IMPORTING TF)
+# Prevents system freezing by stopping Dask & TF thread fighting
+# =====================================================================
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["NUMEXPR_NUM_THREADS"] = "1"
+os.environ["TF_NUM_INTRAOP_THREADS"] = "1"
+os.environ["TF_NUM_INTEROP_THREADS"] = "1"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress verbose C++ logs
+
+import gc
 import numpy as np
 import xarray as xr
-import gc
-import tensorflow as tf
-from dask.diagnostics import ProgressBar
 import pandas as pd
+import dask
+from dask.diagnostics import ProgressBar
 
+import tensorflow as tf
+
+# Hard-cap TensorFlow internal thread allocation
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
+# Prevent TensorFlow from allocating 100% GPU VRAM on launch
+gpus = tf.config.list_physical_devices("GPU")
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        print(f"GPU Memory Growth Setup Error: {e}")
+
+# Safe Dask worker limit (half of CPU cores)
+CPU_COUNT = os.cpu_count() or 4
+SAFE_WORKERS = max(1, CPU_COUNT // 2)
+dask.config.set({"num_workers": SAFE_WORKERS, "scheduler": "threads"})
 
 from .parameters import get_args
 from .user_utilities import map_cube_mdn_chunk
@@ -88,7 +121,7 @@ def subAngles(
         - scattering_angle : Solar radiation scattering angle (degrees).
     """
     # Relative azimuth angle calculation
-    relative_azimuth = np.abs((viewing_azimuth - solar_azimuth) % 360 - 180) #np.abs(solar_azimuth - viewing_azimuth - 180) % 360
+    relative_azimuth =  np.abs(solar_azimuth - viewing_azimuth - 180) % 360 #np.abs((viewing_azimuth - solar_azimuth) % 360 - 180)
 
     # Convert angular inputs to radians for trigonometric functions
     solz_rad = np.radians(solar_zenith)
@@ -96,7 +129,7 @@ def subAngles(
     relaz_rad = np.radians(relative_azimuth)
 
     # Vectorized cosine of scattering angle computation
-    cos_theta = -np.cos(solz_rad) * np.cos(senz_rad) - np.sin(solz_rad) * np.sin(
+    cos_theta = -np.cos(solz_rad) * np.cos(senz_rad) + np.sin(solz_rad) * np.sin(
         senz_rad
     ) * np.cos(relaz_rad)
 
@@ -327,9 +360,9 @@ def acmap_cube_mdn_chunk(
     ds_chunk = xr.Dataset(data_vars=data_vars, coords=coords)
 
     # Cleanup memory
-    del img_chunk_np, water_spectra
+    """del img_chunk_np, water_spectra
     gc.collect()
-    tf.keras.backend.clear_session()
+    tf.keras.backend.clear_session()"""
 
     return ds_chunk
 
@@ -512,16 +545,16 @@ def acmap_cube_mdn(
     # 3. Preserve CRS and Geotransform from input dataset
     if hasattr(ds_rrc, "rio") and ds_rrc.rio.crs:
         final_lazy_ds = final_lazy_ds.rio.write_crs(ds_rrc.rio.crs)
-        if ds_subsampled.rio.transform():
+        if ds_rrc.rio.transform():
             final_lazy_ds = final_lazy_ds.rio.write_transform(ds_rrc.rio.transform())
 
     # Compute graph execution
     if progress_vis:
-        print("Computing MDN predictions across chunks...")
+        print(f"Computing MDN-AC predictions across chunks using {SAFE_WORKERS} parallel threads...")
         with ProgressBar():
-            final_ds = final_lazy_ds.compute(scheduler="single-threaded")
+            final_ds = final_lazy_ds.compute()
     else:
-        final_ds = final_lazy_ds.compute(scheduler="single-threaded")
+        final_ds = final_lazy_ds.compute()
 
     # Calculate spatial extent metadata
     lon_min = float(ds_rrc["longitude"].min())

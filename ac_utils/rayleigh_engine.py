@@ -1138,7 +1138,7 @@ def _process_chunk_block(
     sol_zen_rad = np.radians(sol_zen)
     cos_sol_zen = np.cos(sol_zen_rad)
     view_zen_rad = np.radians(view_zen)
-    rel_az = np.abs((view_az - sol_az) % 360 - 180) #np.abs(view_az - sol_az - 180) % 360
+    rel_az =  np.abs(view_az - sol_az - 180) % 360 #np.abs((view_az - sol_az) % 360 - 180)
     airmass = (1.0 / cos_sol_zen) + (1.0 / np.cos(view_zen_rad))
 
     # 4. Rayleigh Coarse-Grid Evaluation
@@ -1420,7 +1420,7 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
     ystart = attrs.get("ystart", 0)
     ystep = attrs.get("ystep", height)
 
-    coarse_size = fixed_resolution #100
+    coarse_size = 100 #fixed_resolution
     coarse_step = max(1, int(coarse_size / fixed_resolution))
 
     if hasattr(ds, "rio") and ds.rio.transform() is not None:
@@ -1613,7 +1613,7 @@ def rayleigh_main(ds: xr.Dataset) -> xr.Dataset:
     glint_da = calculate_glint_coefficient(
         view_zen=  ds['viewing_zenith'], # Radians
         sol_zen=   ds['solar_zenith'],   # Radians
-        rel_az=    np.abs( ((ds['viewing_azimuth'] - ds['solar_azimuth'])%360) - 180 ), #np.abs(ds['viewing_azimuth'] - ds['solar_azimuth'] - 180) % 360,# Radians
+        rel_az=    np.abs(ds['viewing_azimuth'] - ds['solar_azimuth'] - 180) % 360, #np.abs( ((ds['viewing_azimuth'] - ds['solar_azimuth'])%360) - 180 ),# Radians
         windspeed= (ancillary_rasters_da[ancillary_keys.index("wind_speed")]).chunk(chunk_spec).astype(np.float32)    # m/s
     )
     # Assign metadata name
